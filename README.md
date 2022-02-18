@@ -6,6 +6,7 @@ Install Nodejs 16.x
 Install IDE VScode
 DB XAMPP or MongoDB
 
+CMD:
 composer global require laravel/installer
 composer create-project --prefer-dist laravel/laravel UniversitySystemG27 "6.*"
 cd UniversitySystemG27
