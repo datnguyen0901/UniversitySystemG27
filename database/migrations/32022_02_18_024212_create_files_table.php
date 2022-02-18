@@ -17,8 +17,8 @@ class CreateFilesTable extends Migration
             $table->bigIncrements('id');
             $table->string('file_path');
             $table->timestamps();
-            $table->unsignedBigInteger('ideas_id');
-            $table->foreign('ideas_id')->references('id')->on('ideas');
+            $table->unsignedBigInteger('idea_id');
+            $table->foreign('idea_id')->references('id')->on('ideas');
         });
     }
 

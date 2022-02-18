@@ -17,12 +17,12 @@ class CreateCommentsTable extends Migration
             $table->bigIncrements('id');
             $table->text('content');
             $table->timestamps();
-            $table->unsignedBigInteger('users_id');
-            $table->foreign('users_id')->references('id')->on('users');
-            $table->unsignedBigInteger('ideas_id');
-            $table->foreign('ideas_id')->references('id')->on('ideas');
-            $table->unsignedBigInteger('comments_id');
-            $table->foreign('comments_id')->references('id')->on('comments');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('idea_id');
+            $table->foreign('idea_id')->references('id')->on('ideas');
+            $table->unsignedBigInteger('comment_id');
+            $table->foreign('comment_id')->references('id')->on('comments');
         });
     }
 

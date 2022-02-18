@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Idea extends Model
 {
     //
-
+    
     protected $fillable = [
         'title',
         'description',
@@ -15,12 +15,8 @@ class Idea extends Model
     ];
 
     protected $hidden = [
-        'user_id',
-        'status_id',
-    ];
-
-    protected $casts = [
-        'created_at' => 'datetime',
-        'updated_at' => 'datetime',
+        'users_id',
+        'categories_id',
+        'submission_id',
     ];
 }

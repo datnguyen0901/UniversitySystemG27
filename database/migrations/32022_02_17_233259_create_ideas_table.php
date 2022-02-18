@@ -19,12 +19,12 @@ class CreateIdeasTable extends Migration
             $table->string('description');
             $table->text('content');
             $table->timestamps();
-            $table->unsignedBigInteger('users_id');
-            $table->foreign('users_id')->references('id')->on('users');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
-            $table->unsignedBigInteger('submissions_id');
-            $table->foreign('submissions_id')->references('id')->on('submissions');
+            $table->unsignedBigInteger('submission_id');
+            $table->foreign('submission_id')->references('id')->on('submissions');
         });
     }
 

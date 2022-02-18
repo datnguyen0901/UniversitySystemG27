@@ -17,10 +17,10 @@ class CreateReactionsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('reaction');
             $table->timestamps();
-            $table->unsignedBigInteger('users_id');
-            $table->foreign('users_id')->references('id')->on('users');
-            $table->unsignedBigInteger('ideas_id');
-            $table->foreign('ideas_id')->references('id')->on('ideas');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('idea_id');
+            $table->foreign('idea_id')->references('id')->on('ideas');
         });
     }
 
