@@ -15,8 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/ideaview', 'IdeaController@view') ->name('IdeaView');
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('/role', 'RoleController');
+
+Route::resource('/department', 'DepartmentController');

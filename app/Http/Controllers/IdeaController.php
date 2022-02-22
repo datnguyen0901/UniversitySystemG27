@@ -10,7 +10,21 @@ class IdeaController extends Controller
     //
 
     public function view(){
+        // test if user is logged in
+        // $idea = new Idea();    
+        // $idea->title = 'Idea 1';
+        // $idea->description = 'Description 1';
+        // $idea->content = 'Content 1';
+        // $idea->user_id = 1;
+        // $idea->category_id = 1;
+        // $idea->submission_id = 1;
+        // $idea->save();
+
         $ideas = Idea::all();
+
+        foreach($ideas as $idea){
+            echo $idea->title;
+        } 
     }
 
     public function create(Request $request){

@@ -5550,11 +5550,14 @@ a.badge-dark.focus {
 }
 
 .alert {
-  position: relative;
-  padding: 0.75rem 1.25rem;
+  position: center;
+  padding: 0rem 1.25rem;
+  text-align: center;
   margin-bottom: 1rem;
+  width: fit-content;
   border: 1px solid transparent;
   border-radius: 0.25rem;
+  left: 42vw
 }
 
 .alert-heading {
@@ -5566,7 +5569,7 @@ a.badge-dark.focus {
 }
 
 .alert-dismissible {
-  padding-right: 3.85rem;
+  padding-right: 2.85rem;
 }
 
 .alert-dismissible .close {
@@ -5574,7 +5577,7 @@ a.badge-dark.focus {
   top: 0;
   right: 0;
   z-index: 2;
-  padding: 0.75rem 1.25rem;
+  padding: 0.25rem 1.25rem;
   color: inherit;
 }
 

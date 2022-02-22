@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'University System G27') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'University System G27') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -40,6 +40,7 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
+                        <!-- Navigation auth later -->
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
@@ -65,9 +66,17 @@
                                         @csrf
                                     </form>
                                 </div>
+                                
+                                <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/role') }}">{{ __('Role') }}</a>
+                                </li>
+                                
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('/department') }}">{{ __('Department') }}</a>
+                                </li>
                             </li>
                         @endguest
-                    </ul>
+                        </ul>
                 </div>
             </div>
         </nav>
@@ -77,4 +86,14 @@
         </main>
     </div>
 </body>
+<footer>
+<div class="flash-message" >
+        @if ($message = Session::get('success'))
+        <div class="alert alert-success alert-dismissible col-md-4 col-md-offset-4 ">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong><p>Success! {{ $message }}</p></strong>
+        </div>
+        @endif
+  </div> <!-- end .flash-message -->
+</footer>
 </html>
