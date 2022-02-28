@@ -27,3 +27,5 @@ Route::resource('/role', 'RoleController');
 
 Route::resource('/department', 'DepartmentController');
 
+Route::resource('/category', 'CategoryController');
+

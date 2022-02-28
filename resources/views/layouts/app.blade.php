@@ -74,6 +74,10 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ url('/department') }}">{{ __('Department') }}</a>
                                 </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('/category') }}">{{ __('Category') }}</a>
+                                </li>
                             </li>
                         @endguest
                         </ul>

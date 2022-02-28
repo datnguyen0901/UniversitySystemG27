@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 class DepartmentController extends Controller
 {
     public function index(){
+
         $departments = Department::all();
 
         return view('department.department' , compact('departments'));
