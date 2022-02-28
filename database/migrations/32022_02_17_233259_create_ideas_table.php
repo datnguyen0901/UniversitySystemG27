@@ -18,7 +18,8 @@ class CreateIdeasTable extends Migration
             $table->string('title');
             $table->string('description');
             $table->text('content');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent()->nullable();
+            $table->timestamp('updated_at')->useCurrent()->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('category_id');

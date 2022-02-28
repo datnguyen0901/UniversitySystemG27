@@ -19,4 +19,6 @@ class Idea extends Model
         'categories_id',
         'submission_id',
     ];
+
+    protected $dates = ['created_at', 'updated_at'];
 }

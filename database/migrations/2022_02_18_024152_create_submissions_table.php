@@ -17,6 +17,8 @@ class CreateSubmissionsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('description');
+            $table->date('closure_date');
+            $table->date('final_closure_date');
             $table->timestamps();
         });
     }

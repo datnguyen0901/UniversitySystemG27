@@ -29,3 +29,7 @@ Route::resource('/department', 'DepartmentController');
 
 Route::resource('/category', 'CategoryController');
 
+Route::resource('/submission', 'SubmissionController');
+
+Route::resource('/idea', 'IdeaController');
+
