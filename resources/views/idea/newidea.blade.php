@@ -17,13 +17,10 @@
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">{{ $idea->description}}</h5>
-                            <p class="card-text">{{ $idea->content }}</p>
-                            <a href="#" class="btn btn-primary2">Like</a>
-                            <a href="#" class="btn btn-danger2">Dislike</a>
-                            <a href="#" class="btn btn-primary1">Comment</a>
+                            <a class="btn btn-primary1" href="/comment/{{$idea->id}}">View Idea</a>
                         </div>
                         <div class="card-footer text-muted">
-                             Created at {{ $idea->created_at->format('d/m/Y') }}
+                             Created at : {{ $idea->created_at->format('d/m/Y') }}
                         </div>
 
                         @endforeach

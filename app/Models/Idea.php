@@ -21,4 +21,14 @@ class Idea extends Model
     ];
 
     protected $dates = ['created_at', 'updated_at'];
+
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class)->whereNull('parent_id');
+    }
 }

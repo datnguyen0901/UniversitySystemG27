@@ -35,7 +35,7 @@
                                 <input id="datepicker" type="text" class="datepicker" name="closure_date" value="{{$submission->closure_date}}">
                                 <script>
                                 $('#datepicker').datepicker({
-                                    format: 'yy/mm/dd',
+                                    format: 'yyyy/mm/dd',
                                     uiLibrary: 'bootstrap4'
                                 }).datepicker("setDate",'now');
                                 </script>
@@ -49,7 +49,7 @@
                                 <input id="datepicker1" type="text" class="datepicker1" name="final_closure_date" value="{{$submission->final_closure_date}}">
                                 <script>
                                 $('#datepicker1').datepicker({
-                                    format: 'yy/mm/dd',
+                                    format: 'yyyy/mm/dd',
                                     uiLibrary: 'bootstrap4'
                                 }).datepicker("setDate",'now');
                                 </script>

@@ -33,3 +33,8 @@ Route::resource('/submission', 'SubmissionController');
 
 Route::resource('/idea', 'IdeaController');
 
+Route::resource('/comment', 'CommentController');
+
+Route::get('/comment/{id}', 'CommentController@show');
+
+Route::post('/reply/store', 'CommentController@replyStore')->name('reply.add');

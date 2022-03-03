@@ -16,4 +16,17 @@ class View extends Model
         'idea_id',
         'user_id',
     ];
+
+    
+    protected $dates = ['created_at'];
+
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function idea()
+    {
+        return $this->belongsTo(Idea::class);
+    }
 }

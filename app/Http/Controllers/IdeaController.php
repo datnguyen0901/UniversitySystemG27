@@ -7,6 +7,8 @@ use App\Models\Idea;
 use Carbon\Carbon;
 use App\Models\Submission;
 use App\Models\Category;
+use App\Models\Comment;
+use App\Models\View;
 use App\User;
 
 class IdeaController extends Controller
@@ -15,7 +17,6 @@ class IdeaController extends Controller
 
     public function index(){
         $ideas = Idea::all();
-
         return view('idea.newidea') -> with(compact('ideas'));
 }
 
@@ -36,7 +37,7 @@ class IdeaController extends Controller
         $idea->created_at = Carbon::now();
         $idea->updated_at = null;
         $idea->save();
-        return redirect('/newidea')->with('success','Idea created successfully');
+        return redirect('/idea')->with('success','Idea created successfully');
     }
 
     public function edit(Idea $idea)
@@ -64,7 +65,7 @@ class IdeaController extends Controller
 
         $idea->update($request->all());
 
-        return redirect('/newidea')->with('success','Idea updated successfully');
+        return redirect('/idea')->with('success','Idea updated successfully');
     }
 
     /**
