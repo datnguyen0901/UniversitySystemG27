@@ -10,10 +10,11 @@
             <div class="d-flex flex-row align-items-center text-left comment-top p-2 bg-white border-bottom px-4">
                 <div class="profile-image"><img class="rounded-circle" src="https://i.imgur.com/t9toMAQ.jpg" width="70"></div>
                 <div class="d-flex flex-column-reverse flex-grow-0 align-items-center votings ml-1">
-                    <i class="fas fa-thumbs-down" style='font-size:24px;color:red'></i>
-                    <span>Votes</span>
-                    <i class='fas fa-thumbs-up' style='font-size:24px;color:green'></i>                </div>
-                <div class="d-flex flex-column ml-3">
+                    <a href="/dislike/{{$idea->id}}}}"><span><i class="fa fa-thumbs-down" style="font-size:24px;color:red"></i></span></a>
+                    <span><div class="count" id="{{$reaction->reaction}}" name="quantity" value="{{$reaction->reaction}}">{{$reaction->reaction}}</div></span>
+                    <a href="/like/{{$idea->id}}}}"><span><i class="fa fa-thumbs-up" style="font-size:24px;color:green"></i></span></a>
+                </div>
+                    <div class="d-flex flex-column ml-3">
                     <div class="d-flex flex-row post-title">
                         <h3>{{ $idea->title }}</h3>
                         <span class="ml-2 font-weight-bold"> by {{ $user->name }}</span>
@@ -25,8 +26,8 @@
                         <span class="bdge mr-1"> File |</span>
                         <span class="mr-2 comments">Views: {{$viewsCount}} |</span>
                         </span><span> Created at : {{ $idea->created_at->format('d/m/Y') }} </span></div>
-                </div>
-            </div>
+                    </div>
+                    </div>
             <h4>Display Comments</h4>
                     @include('comment.new_comment_replies', ['comments' => $idea->comments, 'idea_id' => $idea->id])
                     <hr />

@@ -38,3 +38,10 @@ Route::resource('/comment', 'CommentController');
 Route::get('/comment/{id}', 'CommentController@show');
 
 Route::post('/reply/store', 'CommentController@replyStore')->name('reply.add');
+
+Route::resource('/reaction', 'ReactionController');
+
+Route::get('/like/{id}', 'ReactionController@like');
+
+Route::get('/dislike/{id}', 'ReactionController@dislike');
+

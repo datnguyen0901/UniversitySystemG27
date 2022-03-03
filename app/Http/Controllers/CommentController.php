@@ -8,6 +8,7 @@ use App\Models\Idea;
 use Carbon\Carbon;
 use App\User;
 use App\Models\View;
+use App\Models\Reaction;
 
 class CommentController extends Controller
 {
@@ -31,14 +32,25 @@ class CommentController extends Controller
         $view->created_at = Carbon::now();
         $view->save();
 
+        $reactionvalid = Reaction::where('idea_id',$id)->where('user_id',auth()->user()->id)->first();
+        if ($reactionvalid === null) {
+            $reaction = new Reaction;
+            $reaction->idea_id = $idea->id;
+            $reaction->user_id = auth()->user()->id;
+            $reaction->reaction = 0;
+            $reaction->save();
+          } else {
+              $reaction = Reaction::where('idea_id',$id)->where('user_id',auth()->user()->id)->first();           // User exits
+          }
+
         $viewsCount = View::where('idea_id', $idea->id)->count();
-        return view('comment.newcomment') -> with(compact('comments','idea','user','viewsCount'));
+        return view('comment.newcomment') -> with(compact('comments','idea','user','viewsCount','reaction'));
     }
 
     public function create(){
 
         return view('comment.createcomment');
-}
+    }
 
     public function store(Request $request){    
         $comment = new Comment;
