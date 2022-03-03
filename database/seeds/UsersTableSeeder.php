@@ -22,5 +22,29 @@ class UsersTableSeeder extends Seeder
             'role_id' => 1,
             'department_id' => 1,
         ]);
+        DB::table('users')->insert([
+            'name' => 'Thuan Khuu',
+            'email' => 'khuuquocthuan@gmail.com',
+            'password' => Hash::make('123456'),
+            'remember_token' => Str::random(10),
+            'role_id' => 2,
+            'department_id' => 2,
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Quan Nguyen',
+            'email' => 'quannagcs190347@fpt.edu.vn',
+            'password' => Hash::make('123456'),
+            'remember_token' => Str::random(10),
+            'role_id' => 3,
+            'department_id' => 3,
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Duc Huynh',
+            'email' => 'ducht@fpt.edu.vn',
+            'password' => Hash::make('123456'),
+            'remember_token' => Str::random(10),
+            'role_id' => 4,
+            'department_id' => 4,
+        ]);
     }
 }

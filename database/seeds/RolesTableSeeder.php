@@ -17,5 +17,23 @@ class RolesTableSeeder extends Seeder
         DB::table('roles')->insert([
             'name' => 'Admin',
         ]);
+        DB::table('roles')->insert([
+            'name' => 'QA Manager',
+        ]);
+        DB::table('roles')->insert([
+            'name' => 'Staff',
+        ]);
+        DB::table('roles')->insert([
+            'name' => 'QA Coordinator',
+        ]);
+        DB::table('roles')->insert([
+            'name' => 'Head',
+        ]);
+        DB::table('roles')->insert([
+            'name' => 'Lecturer',
+        ]);
+        DB::table('roles')->insert([
+            'name' => 'HR Manager',
+        ]);
     }
 }

@@ -17,6 +17,7 @@ class View extends Model
         'user_id',
     ];
 
+    public $timestamps = false;
     
     protected $dates = ['created_at'];
 
