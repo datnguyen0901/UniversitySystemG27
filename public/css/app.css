@@ -2699,6 +2699,7 @@ fieldset:disabled a.btn {
   background-color: #3490dc;
   border-color: #3490dc;
   float: right;
+  margin-left: 0.5vw;
 }
 
 .btn-primary2 {

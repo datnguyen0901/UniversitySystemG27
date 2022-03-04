@@ -45,3 +45,7 @@ Route::get('/like/{id}', 'ReactionController@like');
 
 Route::get('/dislike/{id}', 'ReactionController@dislike');
 
+Route::get('/showmostviewed', 'IdeaController@showmostviewed');
+
+Route::get('/lastcreated', 'IdeaController@lastcreated');
+

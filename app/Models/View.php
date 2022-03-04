@@ -8,10 +8,6 @@ class View extends Model
 {
     //
 
-    protected $fillable = [
-        'view_path',
-    ];
-
     protected $hidden = [
         'idea_id',
         'user_id',

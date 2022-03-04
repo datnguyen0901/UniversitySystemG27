@@ -26,8 +26,9 @@
                             <a class="btn btn-primary1" href="/comment/{{$idea->id}}">View Idea</a>
                         </div>
                         <div class="card-footer text-muted">
-                             Created at : {{ $idea->created_at->format('d/m/Y') }}
+                             Views : {{$idea->views_count}}
                         </div>
+
                 </div>
                 <h3> </h3>
                         @endforeach
