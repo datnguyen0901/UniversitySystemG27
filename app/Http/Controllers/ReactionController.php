@@ -29,17 +29,35 @@ class ReactionController extends Controller
         return view('reaction.createreaction');
     }
 
-    public function like($id){    
-        Reaction::where('idea_id',$id)->where('user_id',auth()->user()->id)
-        ->increment('reaction', 1);
-
+    public function like($id){ 
+        $reactionvalid = Reaction::where('idea_id',$id)->where('user_id',auth()->user()->id)->first();   
+        if ($reactionvalid->reaction == 1) {
+            return back()->with('error', 'You have already reacted to this idea');
+        }
+        elseif ($reactionvalid->reaction == -1) {
+            Reaction::where('idea_id',$id)->where('user_id',auth()->user()->id)
+            ->update(['reaction' => 1]);
+        }
+        else{
+            Reaction::where('idea_id',$id)->where('user_id',auth()->user()->id)
+            ->increment('reaction', 1);
+        }
         return back();
     } 
 
-    public function dislike($id){    
+    public function dislike($id){   
+        $reactionvalid = Reaction::where('idea_id',$id)->where('user_id',auth()->user()->id)->first();   
+        if ($reactionvalid->reaction == -1) {
+            return back()->with('error', 'You have already reacted to this idea');
+        }
+        elseif ($reactionvalid->reaction == 1) {
+            Reaction::where('idea_id',$id)->where('user_id',auth()->user()->id)
+            ->update(['reaction' => -1]);
+        }
+        else{ 
         Reaction::where('idea_id',$id)->where('user_id',auth()->user()->id)
         ->decrement('reaction', 1);
-
+        }
         return back();
     }
 }

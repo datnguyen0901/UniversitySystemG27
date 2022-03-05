@@ -39,13 +39,7 @@ class IdeaController extends Controller
     public function show($id){
         $idea = Idea::find($id);
         $user = User::find($idea->user_id);
-        $comments = Comment::find($idea->id);
-
-        $view = new View;
-        $view->idea_id = $idea->id;
-        $view->user_id = auth()->user()->id;
-        $view->created_at = Carbon::now();
-        $view->save();
+        $comments = Comment::find($idea->id); 
 
         $reactionvalid = Reaction::where('idea_id',$id)->where('user_id',auth()->user()->id)->first();
         return redirect('/idea')->with(compact('ideas'));
@@ -53,12 +47,31 @@ class IdeaController extends Controller
     
 
     public function create(){
-        $submissions = Submission::all();
+        $submissions = Submission::where('closure_date', '>', Carbon::now())->get();
         $categories = Category::all();
         return view('idea.createidea', compact('submissions'), compact('categories'));
     }
 
-    public function store(Request $request){    
+    public function terms(){
+        return response()->file(public_path('file\terms.pdf'));
+    }
+
+    public function store(Request $request){
+        if($request->has('terms')){
+            $idea = new Idea;
+            $idea->title = $request->title;
+            $idea->description = $request->description;
+            $idea->content = $request->content;
+            $idea->submission_id = $request->submission_id;
+            $idea->category_id = $request->category_id;
+            $idea->user_id = auth()->user()->id;
+            $idea->created_at = Carbon::now();
+            $idea->updated_at = null;
+            $idea->save();
+            return redirect('/idea')->with('success','Idea created successfully');//Checkbox checked
+        }else{
+            return back()->with('error','Please accept Terms & Conditions!'); //Checkbox not checked
+        }    
         $idea = new Idea;
         $idea->title = $request->title;
         $idea->description = $request->description;

@@ -56,6 +56,29 @@
                             </div>
                         </div>
 
+                        <h3> </h3>
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <input type="checkbox"
+                                class="form-check-input @error('terms') is-invalid @enderror"
+                                value="true"
+                                name="terms"
+                                id="keep-signed"
+                                {{ !old('terms') ?: 'checked' }}
+                            >
+                                <label class="form-check-label fs-sm">
+                                    {{ __('I agree to') }}
+                                    <a class="nav-link-style fs-ms text-black-50 text-primary text-decoration-none" href="#" onClick="MyWindow=window.open('/terms','MyWindow','width=900,height=900'); return false;">
+                                        {{ __('Terms & Conditions') }}
+                                    </a>
+                                </label>
+                            </div>
+                        </div>
+
+
+                        <h3> </h3>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

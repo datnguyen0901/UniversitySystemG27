@@ -35,6 +35,8 @@ Route::resource('/idea', 'IdeaController');
 
 Route::resource('/comment', 'CommentController');
 
+Route::get('/view/{id}', 'ViewController@store');
+
 Route::get('/comment/{id}', 'CommentController@show');
 
 Route::post('/reply/store', 'CommentController@replyStore')->name('reply.add');
@@ -49,3 +51,8 @@ Route::get('/showmostviewed', 'IdeaController@showmostviewed');
 
 Route::get('/lastcreated', 'IdeaController@lastcreated');
 
+Route::get('/terms', 'IdeaController@terms');
+
+Route::get('/chart', 'ChartController@index');
+
+ 

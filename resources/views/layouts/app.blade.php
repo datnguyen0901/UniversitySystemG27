@@ -99,6 +99,10 @@
 
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ url('/comment') }}">{{ __('Comment') }}</a>
+                                </li>                                
+                                
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('/chart') }}">{{ __('Chart') }}</a>
                                 </li>
                             </li>
                         @endguest
@@ -108,18 +112,25 @@
         </nav>
 
         <main class="py-4">
+            <div class="flash-message" >
+                @if ($message = Session::get('success'))
+                    <div class="alert alert-success alert-dismissible col-md-4 col-md-offset-4 ">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong><p>Success! {{ $message }}</p></strong>
+                    </div>
+                @endif
+                @if ($message = Session::get('error'))
+                    <div class="alert alert-danger alert-dismissible col-md-4 col-md-offset-4 ">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong><p>Error! {{ $message }}</p></strong>
+                    </div>
+                @endif
+            </div> 
             @yield('content')
         </main>
     </div>
 </body>
 <footer>
-<div class="flash-message" >
-        @if ($message = Session::get('success'))
-        <div class="alert alert-success alert-dismissible col-md-4 col-md-offset-4 ">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <strong><p>Success! {{ $message }}</p></strong>
-        </div>
-        @endif
-  </div> <!-- end .flash-message -->
+<!-- end .flash-message -->
 </footer>
 </html>

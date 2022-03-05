@@ -9,6 +9,8 @@ use Carbon\Carbon;
 use App\User;
 use App\Models\View;
 use App\Models\Reaction;
+use App\Models\Submission;
+use Illuminate\Support\Facades\DB;
 
 class CommentController extends Controller
 {
@@ -26,11 +28,7 @@ class CommentController extends Controller
         $user = User::find($idea->user_id);
         $comments = Comment::find($idea->id);
 
-        $view = new View;
-        $view->idea_id = $idea->id;
-        $view->user_id = auth()->user()->id;
-        $view->created_at = Carbon::now();
-        $view->save();
+        $viewsCount = View::where('idea_id', $idea->id)->count();
 
         $reactionvalid = Reaction::where('idea_id',$id)->where('user_id',auth()->user()->id)->first();
         if ($reactionvalid === null) {
@@ -39,12 +37,13 @@ class CommentController extends Controller
             $reaction->user_id = auth()->user()->id;
             $reaction->reaction = 0;
             $reaction->save();
-          } else {
-              $reaction = Reaction::where('idea_id',$id)->where('user_id',auth()->user()->id)->first();           // User exits
-          }
-
-        $viewsCount = View::where('idea_id', $idea->id)->count();
+          } 
+                else {
+                    $reaction = Reaction::where('idea_id',$id)->where('user_id',auth()->user()->id)->first();           // User exits
+                }
+  
         return view('comment.newcomment') -> with(compact('comments','idea','user','viewsCount','reaction'));
+
     }
 
     public function create(){
@@ -52,18 +51,39 @@ class CommentController extends Controller
         return view('comment.createcomment');
     }
 
-    public function store(Request $request){    
-        $comment = new Comment;
-        $comment->content = $request->get('comment_content');
-        $comment->user_id = auth()->user()->id;
-        $idea = Idea::find($request->get('idea_id'));
-        $idea->comments()->save($comment);
+    public function store(Request $request){  
+        $submission = DB::table('submissions')
+        ->join('ideas', 'submissions.id', '=', 'ideas.submission_id')
+        ->select(array('submissions.*', DB::raw('count(ideas.id) as ideas_count')))
+        ->where('ideas.id', $request->idea_id)
+        ->groupBy('submissions.id')
+        ->orderBy('ideas_count', 'desc')
+        ->first();
+        if ($submission->closure_date > Carbon::now()) {
 
-        return back();
+            $comment = new Comment;
+            $comment->content = $request->get('comment_content');
+            $comment->user_id = auth()->user()->id;
+            $idea = Idea::find($request->get('idea_id'));
+            $idea->comments()->save($comment);
+    
+            return back();
+        }
+        else {
+            return back()->with('error', 'Submission is closed!');
+        }
     }
 
     public function replyStore(Request $request)
     {
+        $submission = DB::table('submissions')
+        ->join('ideas', 'submissions.id', '=', 'ideas.submission_id')
+        ->select(array('submissions.*', DB::raw('count(ideas.id) as ideas_count')))
+        ->where('ideas.id', $request->idea_id)
+        ->groupBy('submissions.id')
+        ->orderBy('ideas_count', 'desc')
+        ->first();
+        if ($submission->closure_date > Carbon::now()) {
         $reply = new Comment();
         $reply->content = $request->get('comment_content');
         $reply->user_id = auth()->user()->id;
@@ -72,6 +92,11 @@ class CommentController extends Controller
         $idea->comments()->save($reply);
 
         return back();
+        }
+        else {
+            return back()->with('error', 'Submission is closed!');
+        }
+ 
     }
 
     public function edit(Comment $comment)
