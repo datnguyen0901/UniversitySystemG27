@@ -11,6 +11,7 @@ use App\Models\View;
 use App\Models\Reaction;
 use App\Models\Submission;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class CommentController extends Controller
 {
@@ -66,7 +67,15 @@ class CommentController extends Controller
             $comment->user_id = auth()->user()->id;
             $idea = Idea::find($request->get('idea_id'));
             $idea->comments()->save($comment);
-    
+            //send mail after comment
+            $user = User::find($comment->user_id);
+            $ideamail = User::where('id',$idea->user_id)->first();
+            Mail::send('emails.commentemail', compact('user','comment'), function ($message) use ($ideamail)
+            {
+                $message->from('testmailgreenwich2379@gmail.com', 'University System G27');
+                $message->to($ideamail->email);
+                $message->subject('New comment of your idea has been posted!');
+            });
             return back();
         }
         else {
@@ -90,7 +99,15 @@ class CommentController extends Controller
         $reply->parent_id = $request->get('comment_id');
         $idea = Idea::find($request->get('idea_id'));
         $idea->comments()->save($reply);
-
+        //send mail after reply
+        $user = User::find($reply->user_id);
+        $replymail = User::where('id',$reply->user_id)->first();
+        Mail::send('emails.replyemail', compact('user','reply'), function ($message) use ($replymail)
+        {
+            $message->from('testmailgreenwich2379@gmail.com', 'University System G27');
+            $message->to($replymail->email);
+            $message->subject('New reply of your comment has been posted!');
+        });
         return back();
         }
         else {

@@ -59,4 +59,4 @@ Route::get('/viewchart', 'ChartController@viewchart');
 
 Route::get('/reactionchart', 'ChartController@reactionchart');
 
- 
+Route::get('sendmail', 'EmailController@sendEMail');

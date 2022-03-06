@@ -43,8 +43,24 @@ class UsersTableSeeder extends Seeder
             'email' => 'ducht@fpt.edu.vn',
             'password' => Hash::make('123456'),
             'remember_token' => Str::random(10),
-            'role_id' => 4,
+            'role_id' => 5,
             'department_id' => 4,
+        ]);
+        DB::table('users')->insert([
+            'name' => 'QA Coordinator of IT department',
+            'email' => 'datn82@gmail.com',
+            'password' => Hash::make('123456'),
+            'remember_token' => Str::random(10),
+            'role_id' => 4,
+            'department_id' => 1,
+        ]);
+        DB::table('users')->insert([
+            'name' => 'QA Coordinator of Business department',
+            'email' => 'ntd8989@gmail.com',
+            'password' => Hash::make('123456'),
+            'remember_token' => Str::random(10),
+            'role_id' => 4,
+            'department_id' => 2,
         ]);
     }
 }

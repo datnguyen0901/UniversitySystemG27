@@ -12,6 +12,8 @@ use App\Models\View;
 use App\User;
 use Illuminate\Support\Facades\DB;
 use App\Models\Reaction;
+use App\Mail\MailNotify;
+use Illuminate\Support\Facades\Mail;
 class IdeaController extends Controller
 {
     //
@@ -42,7 +44,7 @@ class IdeaController extends Controller
         $comments = Comment::find($idea->id); 
 
         $reactionvalid = Reaction::where('idea_id',$id)->where('user_id',auth()->user()->id)->first();
-        return redirect('/idea')->with(compact('ideas'));
+        return redirect('/idea')->with(compact('ideas','user'));
     }
     
 
@@ -68,21 +70,21 @@ class IdeaController extends Controller
             $idea->created_at = Carbon::now();
             $idea->updated_at = null;
             $idea->save();
+
+            //mail to QA coordinator when summit idea
+            $user = User::find($idea->user_id);
+            $qamail = User::where([['role_id',4], ['department_id',$user->department_id]])->first();
+            Mail::send('emails.email', compact('user','idea'), function ($message) use ($qamail)
+            {
+                $message->from('testmailgreenwich2379@gmail.com', 'University System G27');
+                $message->to($qamail->email);
+                $message->subject('New Idea of your department has been posted!');
+            });
+ 
             return redirect('/idea')->with('success','Idea created successfully');//Checkbox checked
         }else{
             return back()->with('error','Please accept Terms & Conditions!'); //Checkbox not checked
         }    
-        $idea = new Idea;
-        $idea->title = $request->title;
-        $idea->description = $request->description;
-        $idea->content = $request->content;
-        $idea->submission_id = $request->submission_id;
-        $idea->category_id = $request->category_id;
-        $idea->user_id = auth()->user()->id;
-        $idea->created_at = Carbon::now();
-        $idea->updated_at = null;
-        $idea->save();
-        return redirect('/idea')->with('success','Idea created successfully');
     }
 
     public function edit(Idea $idea)
