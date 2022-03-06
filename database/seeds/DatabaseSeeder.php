@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
             SubmissionsTableSeeder::class,
             IdeasTableSeeder::class,
             CommentsTableSeeder::class,
+            ViewsTableSeeder::class,
+            ReactionsTableSeeder::class,
          ]);
     }
 }

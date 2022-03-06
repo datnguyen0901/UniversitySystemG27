@@ -102,7 +102,7 @@
                                 </li>                                
                                 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/chart') }}">{{ __('Chart') }}</a>
+                                    <a class="nav-link" href="{{ url('/ideachart') }}">{{ __('Chart') }}</a>
                                 </li>
                             </li>
                         @endguest

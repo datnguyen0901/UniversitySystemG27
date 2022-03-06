@@ -53,6 +53,10 @@ Route::get('/lastcreated', 'IdeaController@lastcreated');
 
 Route::get('/terms', 'IdeaController@terms');
 
-Route::get('/chart', 'ChartController@index');
+Route::get('/ideachart', 'ChartController@ideachart');
+
+Route::get('/viewchart', 'ChartController@viewchart');
+
+Route::get('/reactionchart', 'ChartController@reactionchart');
 
  
