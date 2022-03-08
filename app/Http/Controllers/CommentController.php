@@ -12,6 +12,7 @@ use App\Models\Reaction;
 use App\Models\Submission;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use App\Models\File;
 
 class CommentController extends Controller
 {
@@ -25,9 +26,9 @@ class CommentController extends Controller
 
 
     public function show($id){
-        $idea = Idea::find($id);
-        $user = User::find($idea->user_id);
-        $comments = Comment::find($idea->id);
+        $idea = Idea::select('id', 'title', 'description','content', 'created_at', 'updated_at')->where('id', $id)->first();
+        $comments = Comment::select('id', 'content', 'created_at', 'updated_at')->where('idea_id', $id)->get();
+        $file = File::where('idea_id',$idea->id)->first();
 
         $viewsCount = View::where('idea_id', $idea->id)->count();
 
@@ -39,11 +40,8 @@ class CommentController extends Controller
             $reaction->reaction = 0;
             $reaction->save();
           } 
-                else {
-                    $reaction = Reaction::where('idea_id',$id)->where('user_id',auth()->user()->id)->first();           // User exits
-                }
-  
-        return view('comment.newcomment') -> with(compact('comments','idea','user','viewsCount','reaction'));
+            $reaction = Reaction::where('idea_id',$idea->id)->sum('reaction');
+        return view('comment.newcomment') -> with(compact('comments','idea','viewsCount','reaction','file'));
 
     }
 

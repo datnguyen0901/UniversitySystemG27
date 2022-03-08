@@ -1,8 +1,3 @@
-var number = 1;
-function plusOne(count) {
-  number++;
-  count.textContent = number.toString();
-}
 
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache

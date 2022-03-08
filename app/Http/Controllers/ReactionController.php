@@ -40,7 +40,7 @@ class ReactionController extends Controller
         }
         else{
             Reaction::where('idea_id',$id)->where('user_id',auth()->user()->id)
-            ->increment('reaction', 1);
+            ->update(['reaction' => -1]);
         }
         return back();
     } 
@@ -56,7 +56,7 @@ class ReactionController extends Controller
         }
         else{ 
         Reaction::where('idea_id',$id)->where('user_id',auth()->user()->id)
-        ->decrement('reaction', 1);
+        ->update(['reaction' => 1]);
         }
         return back();
     }

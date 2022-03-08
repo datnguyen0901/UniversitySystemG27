@@ -47,9 +47,13 @@ Route::get('/like/{id}', 'ReactionController@like');
 
 Route::get('/dislike/{id}', 'ReactionController@dislike');
 
+Route::get('/showmostpopular', 'IdeaController@showmostpopular');
+
 Route::get('/showmostviewed', 'IdeaController@showmostviewed');
 
 Route::get('/lastcreated', 'IdeaController@lastcreated');
+
+Route::get('/lastcomment', 'IdeaController@lastcomment');
 
 Route::get('/terms', 'IdeaController@terms');
 
@@ -60,3 +64,14 @@ Route::get('/viewchart', 'ChartController@viewchart');
 Route::get('/reactionchart', 'ChartController@reactionchart');
 
 Route::get('sendmail', 'EmailController@sendEMail');
+
+Route::get('upload', 'FileController@fileUpload')->name('file.upload');
+
+Route::post('upload', 'FileController@fileUploadPost')->name('file.upload.post');
+
+Route::get('/download/{ideaid}', 'FileController@downloadFile');
+
+Route::get('/downloadcsv', 'TransferFileController@show');
+
+Route::get('/transfer/{id}', 'TransferFileController@exportCsv');
+

@@ -37,5 +37,11 @@ class SubmissionsTableSeeder extends Seeder
             'closure_date' => '2022-09-01 06:00:00',
             'final_closure_date' => '2022-09-30 23:59:59',
         ]);
+        DB::table('submissions')->insert([
+            'name' => 'Late Sprint Ideas',
+            'description' => 'Contest for ideas for Late Sprint',
+            'closure_date' => '2022-02-01 06:00:00',
+            'final_closure_date' => '2022-03-01 23:59:59',
+        ]);
     }
 }

@@ -22,13 +22,6 @@ class ReactionsTableSeeder extends Seeder
             'updated_at' => Carbon::now()
         ]);
         DB::table('reactions')->insert([
-            'idea_id' => 2,
-            'user_id' => 2,
-            'reaction' => 1,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
-        ]);
-        DB::table('reactions')->insert([
             'idea_id' => 4,
             'user_id' => 4,
             'reaction' => 1,
@@ -84,5 +77,34 @@ class ReactionsTableSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
+        DB::table('reactions')->insert([
+            'idea_id' => 8,
+            'user_id' => 1,
+            'reaction' => 1,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+        DB::table('reactions')->insert([
+            'idea_id' => 8,
+            'user_id' => 4,
+            'reaction' => 1,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+        DB::table('reactions')->insert([
+            'idea_id' => 8,
+            'user_id' => 2,
+            'reaction' => 1,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+        DB::table('reactions')->insert([
+            'idea_id' => 8,
+            'user_id' => 3,
+            'reaction' => 1,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+        
     }
 }

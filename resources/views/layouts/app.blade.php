@@ -11,7 +11,7 @@
     
     <!-- Bootstrap 4 icon -->
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
     <!-- Bootstrap 4 datetime picker -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -104,6 +104,16 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ url('/ideachart') }}">{{ __('Chart') }}</a>
                                 </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('/upload') }}">{{ __('Upload') }}</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('/downloadcsv') }}">{{ __('Download CSV') }}</a>
+                                </li>
+
+
                             </li>
                         @endguest
                         </ul>

@@ -9,7 +9,7 @@
                     <a href="idea/create" class="btn btn-primary1">Create new Idea</a>
                 </div>
                 <div class="card-header">
-                    <a href="idea" class="btn btn-primary1">All Ideas</a>
+                <a href="idea" class="btn btn-primary1">All Ideas</a>
                     <a href="/showmostpopular" class="btn btn-primary1">Most Popular Ideas</a>
                     <a href="/showmostviewed" class="btn btn-primary1">Most viewed Ideas</a>
                     <a href="/lastcreated" class="btn btn-primary1">Lastest Ideas</a>
@@ -25,11 +25,13 @@
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">{{ $idea->description}}</h5>
-                            <a class="btn btn-primary1" href="/view/{{$idea->id}}">View Idea</a>
+                            <a class="btn btn-primary1" href="/comment/{{$idea->id}}">View Idea</a>
                         </div>
                         <div class="card-footer text-muted">
-                             Created at : {{ $idea->created_at->format('d/m/Y') }}
+                             Views : {{$idea->views_count}}
+                             <> Create at : {{$idea->created_at}}
                         </div>
+
                 </div>
                 <h3> </h3>
                         @endforeach

@@ -11,24 +11,31 @@
                 <div class="profile-image"><img class="rounded-circle" src="https://i.imgur.com/t9toMAQ.jpg" width="70"></div>
                 <div class="d-flex flex-column-reverse flex-grow-0 align-items-center votings ml-1">
                     <a href="/dislike/{{$idea->id}}}}"><span><i class="fa fa-thumbs-down" style="font-size:24px;color:red"></i></span></a>
-                    <span><div class="count" id="{{$reaction->reaction}}" name="quantity" value="{{$reaction->reaction}}">{{$reaction->reaction}}</div></span>
+                    <span><div class="count" id="{{$reaction}}" name="quantity" value="{{$reaction}}">{{$reaction}}</div></span>
                     <a href="/like/{{$idea->id}}}}"><span><i class="fa fa-thumbs-up" style="font-size:24px;color:green"></i></span></a>
                 </div>
                     <div class="d-flex flex-column ml-3">
                     <div class="d-flex flex-row post-title">
                         <h3>{{ $idea->title }}</h3>
-                        <span class="ml-2 font-weight-bold"> by {{ $user->name }}</span>
+                        <span class="ml-2 font-weight-bold"> by Anonymous</span>
                     </div>
                     <p>
                         {{ $idea->content }}
                     </p>
                     <div class="d-flex flex-row align-items-center align-content-center post-title">
-                        <span class="bdge mr-1"> File |</span>
-                        <span class="mr-2 comments">Views: {{$viewsCount}} |</span>
+                        @if(empty($file->file_path)){
+                            <span class="bdge mr-1"> No File for this Idea</span>
+                        }
+                        @else{
+                            <span class="bdge mr-1"><a href="/download/{{$idea->id}}">File</a></span>
+                        }
+                        @endif
+
+                        <span class="mr-2 comments">| Views: {{$viewsCount}} |</span>
                         </span><span> Created at : {{ $idea->created_at->format('d/m/Y') }} </span></div>
                     </div>
                     </div>
-            <h4>Display Comments</h4>
+                <h4>Display Comments</h4>
                     @include('comment.new_comment_replies', ['comments' => $idea->comments, 'idea_id' => $idea->id])
                     <hr />
                     <h4>Add comment</h4>

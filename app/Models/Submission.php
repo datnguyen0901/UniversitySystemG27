@@ -18,17 +18,7 @@ class Submission extends Model
 
     protected $dates = [
         'closure_date',
-        'final_closure_date',
+        'final_closure_date'
     ];
-
-    public function setClosureDateAttribute($value)
-    {
-        $this->attributes['closure_date'] = Carbon::createFromFormat('Y/m/d', $value);
-    }
-
-    public function setFinalClosureDateAttribute($value)
-    {
-        $this->attributes['final_closure_date'] = Carbon::createFromFormat('Y/m/d', $value);
-    }
 
 }

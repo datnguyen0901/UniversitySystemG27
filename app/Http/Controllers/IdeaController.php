@@ -23,19 +23,48 @@ class IdeaController extends Controller
         return view('idea.newidea') -> with(compact('ideas'));
     }
 
+    public function showmostpopular(){
+        $ideas = DB::table('ideas')
+        ->join('reactions', 'ideas.id', '=', 'reactions.idea_id')
+        ->select(array('ideas.*', DB::raw('count(reactions.id) as reactions_count')))
+        ->groupBy('ideas.id')
+        ->orderBy('reactions_count', 'desc')
+        ->paginate(5);
+        
+        foreach ($ideas as $idea) {
+            $idea->created_at = Carbon::parse($idea->created_at)->format('d-m-Y');
+        }
+
+        return view('idea.mostreactionidea') -> with(compact('ideas'));
+    }
+
     public function showmostviewed(){
         $ideas = DB::table('ideas')
         ->join('views', 'ideas.id', '=', 'views.idea_id')
         ->select(array('ideas.*', DB::raw('count(views.id) as views_count')))
         ->groupBy('ideas.id')
         ->orderBy('views_count', 'desc')
-        ->paginate(5); 
-        return view('idea.complexidea') -> with(compact('ideas'));
+        ->paginate(5);
+        
+        foreach ($ideas as $idea) {
+            $idea->created_at = Carbon::parse($idea->created_at)->format('d-m-Y');
+        }
+
+        return view('idea.mostviewidea') -> with(compact('ideas'));
     }
 
     public function lastcreated(){
         $ideas = Idea::orderBy('created_at', 'desc')->paginate(5);
         return view('idea.newidea') -> with(compact('ideas'));
+    }
+
+    public function lastcomment(){
+        $ideas = DB::table('ideas')
+        ->join('comments', 'ideas.id', '=', 'comments.idea_id')
+        ->select(array('ideas.id','ideas.title','ideas.description','comments.created_at'))
+        ->orderBy('comments.created_at', 'desc')
+        ->paginate(5);
+        return view('idea.lastcommentidea') -> with(compact('ideas'));
     }
 
     public function show($id){

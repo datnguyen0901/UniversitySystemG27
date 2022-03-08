@@ -86,5 +86,15 @@ class IdeasTableSeeder extends Seeder
             'created_at' => '2022-03-01 06:00:00',
             'updated_at' => Carbon::now(),
         ]);
+        DB::table('ideas')->insert([
+            'title' => 'CSV test',
+            'description' => 'Introduce React to the world',
+            'content' => 'React is a JavaScript library for building user interfaces. It is maintained by Facebook and a community of individual developers and companies. React can be used as a base in the development of single-page or mobile applications.',
+            'category_id' => 1,
+            'submission_id' => 5, 
+            'user_id' => 1,
+            'created_at' => '2022-01-01 06:00:00',
+            'updated_at' => Carbon::now(),
+        ]);
     }
 }
