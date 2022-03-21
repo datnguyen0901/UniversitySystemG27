@@ -3,72 +3,98 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Idea;
+use App\Models\submission;
 use App\User;
 use App\Models\File;
 use Illuminate\Http\Response;
 use ZipArchive;
 use Illuminate\Support\Facades\Storage;
-use App\Models\Submission;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
-
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Csv;
+use App\Models\Reaction;
 
 class TransferFileController extends Controller
 {
+
+    public function __construct()
+    {        
+        $this->middleware('auth');
+    }
+
     public function show()
     {
 
-        $ideas = DB::table('ideas')
-        ->join('submissions', 'ideas.submission_id', '=', 'submissions.id')
-        ->join('views', 'ideas.id', '=', 'views.idea_id')
-        ->select(array('ideas.*','submissions.*', DB::raw('count(views.id) as views_count')))
-        ->where('submissions.closure_date', '<', Carbon::now())
-        ->groupBy('views.idea_id')
-        ->paginate(5);
+        $submissions = DB::table('submissions')
+           ->select('submissions.*')
+            ->where('submissions.final_closure_date', '<=', Carbon::now())
+            ->paginate(5);
        
-        foreach ($ideas as $idea) {
-            $idea->final_closure_date = Carbon::parse($idea->final_closure_date)->format('d-m-Y');
-            $idea->created_at = Carbon::parse($idea->created_at)->format('d-m-Y');
+        foreach ($submissions as $submission) {
+            $submission->final_closure_date = Carbon::parse($submission->final_closure_date)->format('d-m-Y');
+            $submission->created_at = Carbon::parse($submission->created_at)->format('d-m-Y');
+            $submission->ideas = DB::table('ideas')
+            ->join('users', 'ideas.user_id', '=', 'users.id')
+            ->join('views', 'ideas.id', '=', 'views.idea_id')
+            ->select(array('ideas.*','users.name as username', DB::raw('count(views.id) as views_count')))
+            ->where('ideas.submission_id', '=', $submission->id)
+            ->groupBy('ideas.id')
+            ->orderBy('views_count', 'desc')
+            ->get();
+            foreach ($submission->ideas as $idea) {
+                $reaction = Reaction::where('idea_id',$idea->id)->sum('reaction');
+            }
         }
 
-        return view('transfer.transferview')->with(compact('ideas'));
+        return view('transfer.transferview')->with(compact('submissions','reaction'));
     }
 
-    public function exportCsv($id,Request $request)
-    {
-        $idea = Idea::find($id);
-        $fileName = $idea->id.'.csv';
-        
-        $tasks = Task::all();
-     
-             $headers = array(
-                 "Content-type"        => "text/csv",
-                 "Content-Disposition" => "attachment; filename=$fileName",
-                 "Pragma"              => "no-cache",
-                 "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
-                 "Expires"             => "0"
-             );
-     
-             $columns = array('Title', 'Assign', 'Description', 'Start Date', 'Due Date');
-     
-             $callback = function() use(, $columns) {
-                 $file = fopen('php://output', 'w');
-                 fputcsv($file, $columns);
-     
-                 foreach ($tasks as $task) {
-                     $row['Title']  = $task->title;
-                     $row['Assign']    = $task->assign->name;
-                     $row['Description']    = $task->description;
-                     $row['Start Date']  = $task->start_at;
-                     $row['Due Date']  = $task->end_at;
-     
-                     fputcsv($file, array($row['Title'], $row['Assign'], $row['Description'], $row['Start Date'], $row['Due Date']));
-                 }
-     
-                 fclose($file);
-             };
-     
-             return response()->stream($callback, 200, $headers);
-         }
+    public function csvDownload($id)
+    {      
+            $ideas = DB::table('ideas')
+            ->join('users', 'ideas.user_id', '=', 'users.id')
+            ->join('views', 'ideas.id', '=', 'views.idea_id')
+            ->join('submissions', 'ideas.submission_id', '=', 'submissions.id')
+            ->select(array('submissions.*','ideas.*','users.name as username', DB::raw('count(views.id) as views_count')))
+            ->where('ideas.submission_id', '=', $id)
+            ->groupBy('ideas.id')
+            ->orderBy('views_count', 'desc')
+            ->get();
+
+            foreach ($ideas as $idea) {
+                $idea->final_closure_date = Carbon::parse($idea->final_closure_date)->format('d-m-Y');
+                $idea->created_at = Carbon::parse($idea->created_at)->format('d-m-Y');
+                $reaction = Reaction::where('idea_id',$idea->id)->sum('reaction');
+            }
+
+
+            $spreadsheet = new Spreadsheet();
+            $sheet = $spreadsheet->getActiveSheet();
+            $sheet->setCellValue('A1', 'Name of Submission');
+            $sheet->setCellValue('B1', 'Title of submission');
+            $sheet->setCellValue('C1', 'Author');
+            $sheet->setCellValue('D1', 'Closure Date');
+            $sheet->setCellValue('E1', 'Final Closure Date');
+            $sheet->setCellValue('F1', 'Views');
+            $sheet->setCellValue('G1', 'Reactions');
+    
+            $i = 2;
+            foreach ($ideas as $idea) {
+                $sheet->setCellValue('A'.$i, $idea->name);
+                $sheet->setCellValue('B'.$i, $idea->title);
+                $sheet->setCellValue('C'.$i, $idea->username);
+                $sheet->setCellValue('D'.$i, $idea->created_at);
+                $sheet->setCellValue('E'.$i, $idea->final_closure_date);
+                $sheet->setCellValue('F'.$i, $idea->views_count);
+                $sheet->setCellValue('G'.$i, $reaction);
+                $i++;
+            }     
+            
+            $writer = new Csv($spreadsheet);
+            $writer->save(public_path('storage/csv/'.$idea->name.'.csv'));
+            
+            return response()->download(public_path('storage/csv/'.$idea->name.'.csv'));
+
+    }
 }

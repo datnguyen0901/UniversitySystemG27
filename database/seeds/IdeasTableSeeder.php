@@ -96,5 +96,15 @@ class IdeasTableSeeder extends Seeder
             'created_at' => '2022-01-01 06:00:00',
             'updated_at' => Carbon::now(),
         ]);
+        DB::table('ideas')->insert([
+            'title' => 'Laravel2',
+            'description' => 'Test Submission',
+            'content' => 'Laravel is a free, open-source PHP web framework, created by Taylor Otwell and intended for the development of web applications following the model–view–controller (MVC) architectural pattern. Laravel is a micro-framework, which means that Laravel is designed to be used as a standalone application or a component library. It is a collection of commonly used components and traits for developing web applications.',
+            'category_id' => 2,
+            'submission_id' => 1, 
+            'user_id' => 4,
+            'created_at' => '2022-01-15 06:00:00',
+            'updated_at' => Carbon::now(),
+        ]);
     }
 }

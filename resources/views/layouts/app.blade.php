@@ -76,7 +76,12 @@
                                         @csrf
                                     </form>
                                 </div>
-                                
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('/idea') }}">{{ __('Idea') }}</a>
+                                </li>
+
+                                @if(auth()->user()->role_id == 7)
                                 <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/role') }}">{{ __('Role') }}</a>
                                 </li>
@@ -84,7 +89,8 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ url('/department') }}">{{ __('Department') }}</a>
                                 </li>
-
+                                @endif
+                                @if(auth()->user()->role_id == 2)
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ url('/category') }}">{{ __('Category') }}</a>
                                 </li>
@@ -94,25 +100,15 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/idea') }}">{{ __('Idea') }}</a>
+                                    <a class="nav-link" href="{{ url('/downloadcsv') }}">{{ __('Download CSV') }}</a>
                                 </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/comment') }}">{{ __('Comment') }}</a>
-                                </li>                                
-                                
+                                @endif
+                              
+                                @if(auth()->user()->role_id == 2 || auth()->user()->role_id == 4 || auth()->user()->role_id == 5 || auth()->user()->role_id == 7)
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ url('/ideachart') }}">{{ __('Chart') }}</a>
                                 </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/upload') }}">{{ __('Upload') }}</a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/downloadcsv') }}">{{ __('Download CSV') }}</a>
-                                </li>
-
+                                @endif
 
                             </li>
                         @endguest

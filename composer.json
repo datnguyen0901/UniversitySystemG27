@@ -15,7 +15,7 @@
         "laravel/framework": "^6.20.26",
         "laravel/tinker": "^2.5",
         "maatwebsite/excel": "*",
-        "phpoffice/phpspreadsheet": "dev-NumberFormatMask-Helpers",
+        "phpoffice/phpspreadsheet": "^1.8",
         "sentry/sentry-laravel": "^2.11"
     },
     "require-dev": {

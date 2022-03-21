@@ -64,6 +64,27 @@ class CommentsTableSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
+        DB::table('comments')->insert([
+            'user_id' => 1,
+            'idea_id' => 9,
+            'content' => 'This is a comment',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::table('comments')->insert([
+            'user_id' => 2,
+            'idea_id' => 9,
+            'content' => 'This is a comment',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::table('comments')->insert([
+            'user_id' => 3,
+            'idea_id' => 9,
+            'content' => 'This is a comment',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
         
      }
 }

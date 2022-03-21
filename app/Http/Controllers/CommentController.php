@@ -17,6 +17,10 @@ use App\Models\File;
 class CommentController extends Controller
 {
     //
+    public function __construct()
+    {        
+        $this->middleware('auth');
+    }
 
     public function index(){
         $comments = Comment::all();
@@ -146,10 +150,10 @@ class CommentController extends Controller
      * @param  \App\comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comment $comment)
+    public function destroy($commentid)
     {
+        $comment = Comment::find($commentid);
         $comment->delete();
-
-        return redirect('/comment')->with('success','Comment deleted successfully');
+        return back()->with('success','Comment deleted successfully');
     }
 }

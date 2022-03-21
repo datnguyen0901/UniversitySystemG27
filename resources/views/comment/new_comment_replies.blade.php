@@ -8,6 +8,9 @@
                 </div>
                 <div class="comment-text-sm">
                     <span>{{ $comment->content }}</span>
+                    @if(Auth::user()->id == $comment->user_id)
+                    <a class="fa fa-trash" onclick="return confirm('Are you sure?')" href="/comment/delete/{{$comment->id}}" style="color:red"></a>
+                    @endif
                 </div>
                 <a href="" id="reply"></a>
                 <form method="post" action="{{ route('reply.add') }}">

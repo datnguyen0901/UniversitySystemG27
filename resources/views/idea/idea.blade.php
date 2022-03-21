@@ -9,16 +9,14 @@
                     <table class="table table-bordered">
                         <tr>
                             <th>No</th>
-                            <th>Name</th>
-                            <th width="280px">Action</th>
+                            <th>Title</th>
+                            <th width="280px">Description</th>
                         </tr>
                         @foreach ($ideas as $idea)
                         <tr>
                             <td>{{ $idea->id }}</td>
                             <td>{{ $idea->title }}</td>
                             <td>{{ $idea->description }}</td>
-                            <td>{{ $idea->content }}</td>
-                            <td>{{ $idea->create_at }}</td>
                             <td>
                                 <form action="{{ route('idea.destroy',$idea->id) }}" method="POST">
                                     <a class="btn btn-primary" href="{{ route('idea.edit',$idea->id) }}">Edit</a>

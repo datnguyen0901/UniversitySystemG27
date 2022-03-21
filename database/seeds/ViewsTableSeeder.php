@@ -151,7 +151,33 @@ class ViewsTableSeeder extends Seeder
             'idea_id' => 8,
             'user_id' => 2,
         ]);
-        
-        
+        DB::table('views')->insert([
+            'idea_id' => 9,
+            'user_id' => 1,
+        ]);
+        DB::table('views')->insert([
+            'idea_id' => 9,
+            'user_id' => 2,
+        ]);
+        DB::table('views')->insert([
+            'idea_id' => 9,
+            'user_id' => 3,
+        ]);
+        DB::table('views')->insert([
+            'idea_id' => 9,
+            'user_id' => 4,
+        ]);
+        DB::table('views')->insert([
+            'idea_id' => 9,
+            'user_id' => 1,
+        ]);
+        DB::table('views')->insert([
+            'idea_id' => 9,
+            'user_id' => 2,
+        ]);
+        DB::table('views')->insert([
+            'idea_id' => 9,
+            'user_id' => 3,
+        ]);            
     }
 }

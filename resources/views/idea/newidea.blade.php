@@ -9,6 +9,7 @@
                     <a href="idea/create" class="btn btn-primary1">Create new Idea</a>
                 </div>
                 <div class="card-header">
+                    <a href="/myidea" class="btn btn-primary1">My Ideas</a>
                     <a href="idea" class="btn btn-primary1">All Ideas</a>
                     <a href="/showmostpopular" class="btn btn-primary1">Most Popular Ideas</a>
                     <a href="/showmostviewed" class="btn btn-primary1">Most viewed Ideas</a>

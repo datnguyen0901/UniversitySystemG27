@@ -18,13 +18,13 @@ class RolesTableSeeder extends Seeder
             'name' => 'Admin',
         ]);
         DB::table('roles')->insert([
-            'name' => 'QA Manager',
+            'name' => 'QA_Manager',
         ]);
         DB::table('roles')->insert([
             'name' => 'Staff',
         ]);
         DB::table('roles')->insert([
-            'name' => 'QA Coordinator',
+            'name' => 'QA_Coordinator',
         ]);
         DB::table('roles')->insert([
             'name' => 'Head',
@@ -33,7 +33,7 @@ class RolesTableSeeder extends Seeder
             'name' => 'Lecturer',
         ]);
         DB::table('roles')->insert([
-            'name' => 'HR Manager',
+            'name' => 'HR_Manager',
         ]);
     }
 }

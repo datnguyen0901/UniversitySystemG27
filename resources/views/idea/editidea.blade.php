@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Update Idea') }}</div>
 
                 <div class="card-body">
-                    <form action="{{ route('idea.update',$idea->id) }}" method="POST">
+                    <form action="{{ route('idea.update',$idea->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf 
                         @method('PUT')
                         
@@ -55,6 +55,27 @@
                                 @endforeach    
                             </select>
                             </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="editfile" class="col-md-4 col-form-label text-md-right">{{ __('File uploaded') }}</label>
+                                <div class="col-md-6">    
+                                    <ul class="list-group">
+                                            @foreach ($files as $file)
+                                                <li class="list-group-item">
+                                                    <a>{{ $file->file_path }}</a>
+                                                    <a href="/file/delete/{{$file->id}}" class="btn btn-danger btn-sm float-right">Delete</a>                                                    
+                                                </li>
+                                            @endforeach
+                                    </ul>
+                                </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="uploadfile" class="col-md-4 col-form-label text-md-right">{{ __('Upload File') }}</label>
+                                <div class="col-md-6">    
+                                    <input type="file" name="file" class="form-control">
+                                </div>
                         </div>
 
                         <div class="form-group row mb-0">

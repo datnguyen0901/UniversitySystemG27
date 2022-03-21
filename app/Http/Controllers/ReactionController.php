@@ -11,6 +11,12 @@ class ReactionController extends Controller
 {
     //
 
+    public function __construct()
+    {        
+        $this->middleware('auth');
+    }
+
+
     public function index(){
         $reactions = Reaction::all();
 

@@ -30,6 +30,8 @@ Route::resource('/department', 'DepartmentController');
 Route::resource('/category', 'CategoryController');
 
 Route::resource('/submission', 'SubmissionController');
+Route::get('/submission/create', 'SubmissionController@create')->name('submission.create')->middleware('role:Admin');
+Route::get('/submission/{submission}/edit', 'SubmissionController@edit')->name('submission.edit')->middleware('role:Admin');
 
 Route::resource('/idea', 'IdeaController');
 
@@ -39,6 +41,8 @@ Route::get('/view/{id}', 'ViewController@store');
 
 Route::get('/comment/{id}', 'CommentController@show');
 
+Route::get('/comment/delete/{id}', 'CommentController@destroy');
+
 Route::post('/reply/store', 'CommentController@replyStore')->name('reply.add');
 
 Route::resource('/reaction', 'ReactionController');
@@ -46,6 +50,8 @@ Route::resource('/reaction', 'ReactionController');
 Route::get('/like/{id}', 'ReactionController@like');
 
 Route::get('/dislike/{id}', 'ReactionController@dislike');
+
+Route::get('/myidea', 'IdeaController@myidea');
 
 Route::get('/showmostpopular', 'IdeaController@showmostpopular');
 
@@ -73,5 +79,8 @@ Route::get('/download/{ideaid}', 'FileController@downloadFile');
 
 Route::get('/downloadcsv', 'TransferFileController@show');
 
-Route::get('/transfer/{id}', 'TransferFileController@exportCsv');
+Route::get('/transfer/{id}', 'TransferFileController@csvDownload');
+
+Route::get('/file/delete/{id}', 'FileController@delete');
+
 

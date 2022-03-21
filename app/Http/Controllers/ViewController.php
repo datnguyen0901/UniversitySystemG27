@@ -10,6 +10,12 @@ use Carbon\Carbon;
 
 class ViewController extends Controller
 {
+
+    
+    public function __construct()
+    {        
+        $this->middleware('auth');
+    }
     //
     public function store($id){
         $idea = Idea::find($id);

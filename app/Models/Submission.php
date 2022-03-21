@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Illuminate\Foundation\Auth;
 
 class Submission extends Model
 {
@@ -20,5 +21,4 @@ class Submission extends Model
         'closure_date',
         'final_closure_date'
     ];
-
 }

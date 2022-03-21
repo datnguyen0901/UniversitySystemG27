@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\DB;
 class ChartController extends Controller
 {
     //
+
+    public function __construct()
+    {        
+        $this->middleware('auth');
+    }
+
     public function ideachart()
     {
         $departments = DB::table('departments')

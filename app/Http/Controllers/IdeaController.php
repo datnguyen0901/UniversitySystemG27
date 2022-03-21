@@ -14,9 +14,21 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Reaction;
 use App\Mail\MailNotify;
 use Illuminate\Support\Facades\Mail;
+use App\Models\File;
 class IdeaController extends Controller
 {
     //
+
+        public function __construct()
+    {        
+        $this->middleware('auth');
+    }
+
+    public function myidea(){
+        $user_id = auth()->user()->id;
+        $ideas = Idea::where("user_id",$user_id)->paginate(5);
+        return view('idea.idea') -> with(compact('ideas'));
+    }
 
     public function index(){
         $ideas = Idea::paginate(5);
@@ -26,7 +38,7 @@ class IdeaController extends Controller
     public function showmostpopular(){
         $ideas = DB::table('ideas')
         ->join('reactions', 'ideas.id', '=', 'reactions.idea_id')
-        ->select(array('ideas.*', DB::raw('count(reactions.id) as reactions_count')))
+        ->select(array('ideas.*', DB::raw('sum(reactions.reaction) as reactions_count')))
         ->groupBy('ideas.id')
         ->orderBy('reactions_count', 'desc')
         ->paginate(5);
@@ -100,6 +112,20 @@ class IdeaController extends Controller
             $idea->updated_at = null;
             $idea->save();
 
+            $request->validate([
+                'file' => 'required|mimes:pdf,xlx,csv,docx,jpg,gif,png|max:2048',
+            ]);
+      
+            $fileName = time().'.'.$request->file->extension();  
+       
+            $request->file->move(public_path('uploads'), $fileName);
+    
+            //save file data to Files table
+            $file = new File();
+            $file->file_path = $fileName;
+            $file->idea_id = $idea->id;
+            $file->save();
+
             //mail to QA coordinator when summit idea
             $user = User::find($idea->user_id);
             $qamail = User::where([['role_id',4], ['department_id',$user->department_id]])->first();
@@ -120,7 +146,8 @@ class IdeaController extends Controller
     {
         $submissions = Submission::all();
         $categories = Category::all();
-        return view('idea.editidea', compact('submissions','categories','idea'));
+        $files = File::where('idea_id',$idea->id)->get();
+        return view('idea.editidea', compact('submissions','categories','idea','files'));
     }
 
     /**
@@ -138,6 +165,16 @@ class IdeaController extends Controller
             'content' => 'required',
             'updated_at' => Carbon::now(),
         ]);
+
+        $fileName = time().'.'.$request->file->extension();  
+       
+        $request->file->move(public_path('uploads'), $fileName);
+
+        $file = new File();
+        $file->file_path = $fileName;
+        $file->idea_id = $idea->id;
+        $file->save();
+
 
         $idea->update($request->all());
 

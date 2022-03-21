@@ -14,6 +14,11 @@ class FileController extends Controller
 {
     //
 
+    public function __construct()
+    {        
+        $this->middleware('auth');
+    }
+
     public function fileUpload()
     {
         $user = auth()->user();
@@ -68,5 +73,12 @@ class FileController extends Controller
         }
     
         return response()->download(public_path('zip/'.$fileName));
-    }    
+    }  
+    
+    public function delete($fileid)
+    {
+        $file = File::find($fileid);
+        $file->delete();
+        return back()->with('success','File deleted successfully');
+    }
 }

@@ -4,25 +4,37 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Submission;
+use Carbon\Carbon;
 
 class SubmissionController extends Controller
 {
+    // public function __construct()
+    // {        
+    //     $this->middleware('auth');
+    //     $this->middleware('role:Admin');
+    // }
+
+    
+    public function __construct()
+    {        
+        $this->middleware('auth');
+    }
+
     public function index(){
         $submissions = Submission::all();
-
         return view('submission.submission') -> with(compact('submissions'));
-}
+    }
 
     public function create(){
-        return view('submission.createsubmission');
+            return view('submission.createsubmission');       
 }
 
     public function store(Request $request){    
         $submission = new Submission;
         $submission->name = $request->name;
         $submission->description = $request->description;
-        $submission->closure_date = $request->closure_date;
-        $submission->final_closure_date = $request->final_closure_date;
+        $submission->closure_date = Carbon::parse($request->closure_date)->format('Y-m-d');
+        $submission->final_closure_date = Carbon::parse($request->final_closure_date)->format('Y-m-d');
         $submission->save();
         return redirect('/submission')->with('success','Submission created successfully');
     }

@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Create Idea') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('idea.store') }}">
+                    <form method="POST" action="{{ route('idea.store') }}" enctype="multipart/form-data">
                         @csrf 
                         
                         <div class="form-group row">
@@ -54,6 +54,13 @@
                                 @endforeach    
                             </select>
                             </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="uploadfile" class="col-md-4 col-form-label text-md-right">{{ __('Upload File') }}</label>
+                                <div class="col-md-6">    
+                                    <input type="file" name="file" class="form-control">
+                                </div>
                         </div>
 
                         <h3> </h3>
