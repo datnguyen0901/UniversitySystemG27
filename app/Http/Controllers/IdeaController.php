@@ -101,6 +101,9 @@ class IdeaController extends Controller
     }
 
     public function store(Request $request){
+        if(empty($request->title) || empty($request->description) || empty($request->submission_id) || empty($request->category_id)){
+            return back()->with('error','Please fill all information before summit!'); //Check form validation
+        }
         if($request->has('terms')){
             $idea = new Idea;
             $idea->title = $request->title;
@@ -137,8 +140,9 @@ class IdeaController extends Controller
                 $message->subject('New Idea of your department has been posted!');
             });
  
-            return redirect('/idea')->with('success','Idea created successfully');//Checkbox checked
-        }else{
+            return redirect('/lastcreated')->with('success','Idea created successfully');//Checkbox checked
+        }
+        else{
             return back()->with('error','Please accept Terms & Conditions!'); //Checkbox not checked
         }    
     }
