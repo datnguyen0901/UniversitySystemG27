@@ -62,5 +62,13 @@ class UsersTableSeeder extends Seeder
             'role_id' => 4,
             'department_id' => 2,
         ]);
+        DB::table('users')->insert([
+            'name' => 'HR Manager',
+            'email' => 'datnttcs20032@fpt.edu.vn',
+            'password' => Hash::make('123456'),
+            'remember_token' => Str::random(10),
+            'role_id' => 7,
+            'department_id' => 5,
+        ]);
     }
 }

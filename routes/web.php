@@ -23,15 +23,13 @@ Route::get('profile', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('/role', 'RoleController');
+Route::resource('/role', 'RoleController')->middleware('role:Admin,HR_Manager');
 
-Route::resource('/department', 'DepartmentController');
+Route::resource('/department', 'DepartmentController')->middleware('role:Admin,HR_Manager');
 
-Route::resource('/category', 'CategoryController');
+Route::resource('/category', 'CategoryController')->middleware('role:QA_Manager,Admin');
 
-Route::resource('/submission', 'SubmissionController');
-Route::get('/submission/create', 'SubmissionController@create')->name('submission.create')->middleware('role:Admin');
-Route::get('/submission/{submission}/edit', 'SubmissionController@edit')->name('submission.edit')->middleware('role:Admin');
+Route::resource('/submission', 'SubmissionController')->middleware('role:Admin,QA_Manager');
 
 Route::resource('/idea', 'IdeaController');
 
@@ -63,11 +61,11 @@ Route::get('/lastcomment', 'IdeaController@lastcomment');
 
 Route::get('/terms', 'IdeaController@terms');
 
-Route::get('/ideachart', 'ChartController@ideachart');
+Route::get('/ideachart', 'ChartController@ideachart')->middleware('role:Admin,QA_Manager,HR_Manager,Head');
 
-Route::get('/viewchart', 'ChartController@viewchart');
+Route::get('/viewchart', 'ChartController@viewchart')->middleware('role:Admin,QA_Manager,HR_Manager,Head');
 
-Route::get('/reactionchart', 'ChartController@reactionchart');
+Route::get('/reactionchart', 'ChartController@reactionchart')->middleware('role:Admin,QA_Manager,HR_Manager,Head');
 
 Route::get('sendmail', 'EmailController@sendEMail');
 
@@ -77,9 +75,9 @@ Route::post('upload', 'FileController@fileUploadPost')->name('file.upload.post')
 
 Route::get('/download/{ideaid}', 'FileController@downloadFile');
 
-Route::get('/downloadcsv', 'TransferFileController@show');
+Route::get('/downloadcsv', 'TransferFileController@show')->middleware('role:Admin,QA_Manager');
 
-Route::get('/transfer/{id}', 'TransferFileController@csvDownload');
+Route::get('/transfer/{id}', 'TransferFileController@csvDownload')->middleware('role:Admin,QA_Manager');
 
 Route::get('/file/delete/{id}', 'FileController@delete');
 

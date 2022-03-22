@@ -81,7 +81,7 @@
                                     <a class="nav-link" href="{{ url('/idea') }}">{{ __('Idea') }}</a>
                                 </li>
 
-                                @if(auth()->user()->role_id == 7)
+                                @if(auth()->user()->role_id == 7 || auth()->user()->role_id == 1)
                                 <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/role') }}">{{ __('Role') }}</a>
                                 </li>
@@ -90,7 +90,7 @@
                                     <a class="nav-link" href="{{ url('/department') }}">{{ __('Department') }}</a>
                                 </li>
                                 @endif
-                                @if(auth()->user()->role_id == 2)
+                                @if(auth()->user()->role_id == 2 || auth()->user()->role_id == 1)
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ url('/category') }}">{{ __('Category') }}</a>
                                 </li>
@@ -104,7 +104,7 @@
                                 </li>
                                 @endif
                               
-                                @if(auth()->user()->role_id == 2 || auth()->user()->role_id == 4 || auth()->user()->role_id == 5 || auth()->user()->role_id == 7)
+                                @if(auth()->user()->role_id == 2 || auth()->user()->role_id == 5 || auth()->user()->role_id == 7 || auth()->user()->role_id == 1)
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ url('/ideachart') }}">{{ __('Chart') }}</a>
                                 </li>

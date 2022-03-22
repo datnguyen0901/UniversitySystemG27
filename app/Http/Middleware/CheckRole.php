@@ -15,13 +15,14 @@ class CheckRole
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next, string $role)
+    public function handle(Request $request, Closure $next, ... $roles)
     {
-        $role_id = Role::where('name', $role)->first()->id;
-        if ($request->user()->role_id == $role_id) {
-            return $next($request);
+        foreach ($roles as $role) {
+            $role_id = Role::where('name', $role)->first()->id;
+            if ($request->user()->role_id == $role_id) {
+                return $next($request);
+            }
         }
-
         abort(403);
     }
 }

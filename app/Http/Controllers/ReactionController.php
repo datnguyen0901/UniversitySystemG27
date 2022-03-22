@@ -40,7 +40,7 @@ class ReactionController extends Controller
         if ($reactionvalid->reaction == 1) {
             return back()->with('error', 'You have already reacted to this idea');
         }
-        elseif ($reactionvalid->reaction == -1) {
+        elseif ($reactionvalid->reaction == -1 or $reactionvalid->reaction == 0) {
             Reaction::where('idea_id',$id)->where('user_id',auth()->user()->id)
             ->update(['reaction' => 1]);
         }
@@ -56,7 +56,7 @@ class ReactionController extends Controller
         if ($reactionvalid->reaction == -1) {
             return back()->with('error', 'You have already reacted to this idea');
         }
-        elseif ($reactionvalid->reaction == 1) {
+        elseif ($reactionvalid->reaction == 1 or $reactionvalid->reaction == 0) {
             Reaction::where('idea_id',$id)->where('user_id',auth()->user()->id)
             ->update(['reaction' => -1]);
         }
