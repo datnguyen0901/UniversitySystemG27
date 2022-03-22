@@ -67,7 +67,11 @@
                             <select class="form-control" name="role_id">
                                 <option>Select Role</option>
                                 @foreach ($roles as $role)
+                                @if ($role->name == 'Admin' || $role->name == 'QA_Manager' || $role->name == 'HR_Manager' || $role->name == 'Head')
+                                <option value="{{ $role->id }}" disabled>{{ $role->name }}</option>
+                                @else
                                 <option value="{{ $role->id }}"> {{ $role->name }} </option>
+                                @endif
                                 @endforeach    
                             </select>
                             </div>

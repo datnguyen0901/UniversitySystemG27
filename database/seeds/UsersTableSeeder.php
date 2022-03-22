@@ -19,6 +19,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'testmailgreenwich2379@gmail.com',
             'password' => Hash::make('123456'),
             'remember_token' => Str::random(10),
+            'email_verified_at' => now(),
             'role_id' => 1,
             'department_id' => 1,
         ]);
@@ -27,6 +28,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'khuuquocthuan@gmail.com',
             'password' => Hash::make('123456'),
             'remember_token' => Str::random(10),
+            'email_verified_at' => now(),
             'role_id' => 2,
             'department_id' => 2,
         ]);
@@ -35,6 +37,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'quannagcs190347@fpt.edu.vn',
             'password' => Hash::make('123456'),
             'remember_token' => Str::random(10),
+            'email_verified_at' => now(),
             'role_id' => 3,
             'department_id' => 3,
         ]);
@@ -43,6 +46,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'ducht@fpt.edu.vn',
             'password' => Hash::make('123456'),
             'remember_token' => Str::random(10),
+            'email_verified_at' => now(),
             'role_id' => 5,
             'department_id' => 4,
         ]);
@@ -51,6 +55,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'datn82@gmail.com',
             'password' => Hash::make('123456'),
             'remember_token' => Str::random(10),
+            'email_verified_at' => now(),
             'role_id' => 4,
             'department_id' => 1,
         ]);
@@ -59,6 +64,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'ntd8989@gmail.com',
             'password' => Hash::make('123456'),
             'remember_token' => Str::random(10),
+            'email_verified_at' => now(),
             'role_id' => 4,
             'department_id' => 2,
         ]);
@@ -67,6 +73,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'datnttcs20032@fpt.edu.vn',
             'password' => Hash::make('123456'),
             'remember_token' => Str::random(10),
+            'email_verified_at' => now(),
             'role_id' => 7,
             'department_id' => 5,
         ]);
