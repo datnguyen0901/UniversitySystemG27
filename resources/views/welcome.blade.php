@@ -68,7 +68,7 @@
                         <a class="btn btn-light"  href="{{ route('login') }}">Login</a>
 
                         @if (Route::has('register'))
-                            &nbsp
+                            &nbsp &nbsp
                             <a class="btn btn-light" href="{{ route('register') }}">Register</a>
                         @endif
                     @endauth
