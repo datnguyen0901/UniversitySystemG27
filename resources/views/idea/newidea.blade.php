@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('content')
 <style>
 
 .topnav {
@@ -90,8 +91,6 @@
   }
 </style>
 
-@section('content')
-
 
 <div class="container">
     <div class="row justify-content-center">
@@ -122,7 +121,7 @@
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">{{ $idea->description}}</h5>
-                            <a class="btn btn-primary1" href="/view/{{$idea->id}}">View Idea</a>
+                            <a class="btn btn-info" href="/view/{{$idea->id}}">View Idea</a>
                         </div>
                         <div class="card-footer text-muted">
                              Created at : {{ $idea->created_at->format('d/m/Y') }}
