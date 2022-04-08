@@ -7,15 +7,15 @@
                 <div class="card-header">
                     {{ __('List of Ideas') }}
                     &nbsp
-                    <a href="idea/create" class="btn-info">Create new Idea</a>
+                    <a href="idea/create" class="btn-info" style="float:right;">Create new Idea</a>
                 </div>
                 <div class="card-header">
-                    <a href="/myidea" class="btn btn-primary1">My Ideas</a>
-                    <a href="idea" class="btn btn-primary1">All Ideas</a>
-                    <a href="/showmostpopular" class="btn btn-primary1">Most Popular Ideas</a>
-                    <a href="/showmostviewed" class="btn btn-primary1">Most viewed Ideas</a>
-                    <a href="/lastcreated" class="btn btn-primary1">Lastest Ideas</a>
-                    <a href="/lastcomment" class="btn btn-primary1">Lastest Comments</a>
+                    <a href="/myidea" class="btn btn-primary">My Ideas</a> &nbsp
+                    <a href="idea" class="btn btn-primary">All Ideas</a> &nbsp
+                    <a href="/showmostpopular" class="btn btn-primary">Most Popular Ideas</a> &nbsp
+                    <a href="/showmostviewed" class="btn btn-primary">Most viewed Ideas</a> &nbsp
+                    <a href="/lastcreated" class="btn btn-primary">Lastest Ideas</a> &nbsp
+                    <a href="/lastcomment" class="btn btn-primary">Lastest Comments</a> &nbsp
                 </div>
 
                 
