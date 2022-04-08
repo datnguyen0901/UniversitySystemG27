@@ -25,11 +25,18 @@
         user-select: none;
       }
 
-      @media (min-width: 768px) {
+    @media (min-width: 768px) {
         .bd-placeholder-img-lg {
           font-size: 3.5rem;
         }
+
+    @media (min-width: 1024px) {
+        .bd-placeholder-img-lg {
+          font-size: 4.5rem;
+        
       }
+    }
+}
     </style>
 <body class="d-flex h-100 text-center text-white bg-dark">
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -51,23 +58,24 @@
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
         <header class="mb-auto">
             <div>
-            <h3 class="float-md-start mb-0">Group G27</h3>
-            <nav class="nav nav-masthead justify-content-center float-md-end">
+            <h2 class="float-md-start mb-0">Group G27</h2>
+            &nbsp
+            <nav class="nav nav-masthead justify-content-center float-md-end" >
             @if (Route::has('login'))
                 @auth
-                        <a class="nav-link active" aria-current="page" href="{{ url('/home') }}">Home</a>
+                        <a class="btn btn-light" aria-current="page" href="{{ url('/home') }}">Home</a>
                     @else
-                        <a class="nav-link"  href="{{ route('login') }}">Login</a>
+                        <a class="btn btn-light"  href="{{ route('login') }}">Login</a>
 
                         @if (Route::has('register'))
-                            <a class="nav-link" href="{{ route('register') }}">Register</a>
+                            &nbsp
+                            <a class="btn btn-light" href="{{ route('register') }}">Register</a>
                         @endif
                     @endauth
             @endif
             </nav>
             </div>
         </header>
-
         <main class="px-3">
             <h1>Welcome our group page.</h1>
             <p class="lead">COMP1640 Enterprise Web Software Development</p>
