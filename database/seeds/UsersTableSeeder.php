@@ -29,7 +29,7 @@ class UsersTableSeeder extends Seeder
             'password' => Hash::make('123456'),
             'remember_token' => Str::random(10),
             'email_verified_at' => now(),
-            'role_id' => 2,
+            'role_id' => 1,
             'department_id' => 2,
         ]);
         DB::table('users')->insert([
