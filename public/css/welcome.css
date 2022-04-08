@@ -40,7 +40,7 @@ body {
 
 .nav-masthead .nav-link:hover,
 .nav-masthead .nav-link:focus {
-  border-bottom-color: rgba(255, 255, 255, .25);
+  border-bottom-color: rgba(253, 247, 247, 0.856);
 }
 
 .nav-masthead .nav-link + .nav-link {
