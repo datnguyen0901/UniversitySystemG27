@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header">
                     {{ __('List of Ideas') }}
-                    <a href="idea/create" class="btn btn-primary1">Create new Idea</a>
+                    <a href="idea/create" class="btn btn-info">Create new Idea</a>
                 </div>
                 <div class="card-header">
                     <a href="/myidea" class="btn btn-primary1">My Ideas</a>

@@ -5,8 +5,8 @@
         <div class="col-md-10">
             <div class="card">
                 <div class="card-header">
-                    {{ __('List of Ideas') }}
-                    <a href="idea/create" class="btn btn-primary1">Create new Idea</a>
+                    {{ __('List of Ideas') }} &nbsp
+                    <a href="idea/create" class="btn btn-info" style="float:right;">Create new Idea</a>
                 </div>
                 <div class="card-header">
                     <a href="/myidea" class="btn btn-primary1">My Ideas</a>

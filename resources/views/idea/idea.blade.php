@@ -31,7 +31,9 @@
                         @endforeach
                     </table>
                 </div>
-                <a href="idea/create" class="btn btn-primary">Create new Idea</a>
+                <div>
+                <a href="idea/create" class="btn btn-info">Create new Idea</a>
+                </div>
             </div>
         </div>
     </div>

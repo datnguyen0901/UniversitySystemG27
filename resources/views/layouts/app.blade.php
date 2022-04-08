@@ -12,14 +12,10 @@
     <!-- Bootstrap 4 icon -->
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 
-    <!-- Bootstrap 4 datetime picker -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
-    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    
+    
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -355,7 +351,7 @@
 <!-- jQuery -->
 <script src="{{ asset('jquery/jquery.min.js') }}"></script>
 <!-- Bootstrap -->
-<script src="{{ asset('js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{ asset('dist/js/bootstrap/bootstrap.bundle.min.js')}}"></script>
 <!-- AdminLTE -->
 <script src="{{ asset('dist/js/adminlte.js') }}"></script>
 
@@ -364,6 +360,7 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('dist/js/pages/dashboard3.js')}}"></script>
 
+<script src="{{ asset('js/popper.js.map')}}"></script>
 
 </body>
 
