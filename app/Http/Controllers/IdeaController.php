@@ -91,6 +91,7 @@ class IdeaController extends Controller
     
 
     public function create(){
+        //prevent not to create idea if the submission is closed by closure_date
         $submissions = Submission::where('closure_date', '>', Carbon::now())->get();
         $categories = Category::all();
         return view('idea.createidea', compact('submissions'), compact('categories'));
