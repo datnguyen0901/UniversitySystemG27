@@ -62,7 +62,7 @@ class CommentController extends Controller
         ->groupBy('submissions.id')
         ->orderBy('ideas_count', 'desc')
         ->first();
-        if ($submission->closure_date > Carbon::now()) {
+        if ($submission->final_closure_date > Carbon::now()) {
 
             $comment = new Comment;
             $comment->content = $request->get('comment_content');
@@ -94,7 +94,7 @@ class CommentController extends Controller
         ->groupBy('submissions.id')
         ->orderBy('ideas_count', 'desc')
         ->first();
-        if ($submission->closure_date > Carbon::now()) {
+        if ($submission->final_closure_date > Carbon::now()) {
         $reply = new Comment();
         $reply->content = $request->get('comment_content');
         $reply->user_id = auth()->user()->id;
