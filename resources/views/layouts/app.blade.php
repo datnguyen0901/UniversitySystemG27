@@ -39,19 +39,32 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 </head>
 <style>
-     @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-    }
+  @media (min-width: 768px){
+.col-md-8 {
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+.bd-placeholder-img-lg {
+          font-size: 3.5rem; 
+}
+  }
 
     @media (min-width: 1024px) {
-        .bd-placeholder-img-lg {
-          font-size: 4.5rem;
-        
-      }
+      .col-md-8 {
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
     }
+  }
+  @media (min-width: 1440px) {
+      .col-md-8 {
+    -ms-flex: 0 0 200%;
+    flex: 0 0 200%;
+    max-width: 200%;
     }
+  }
+}
 </style>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -139,18 +152,15 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+    <a href="/home" class="brand-link">
+      <span class="brand-text font-weight-light">Slide-Bar</span>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-        </div>
+        
       </div>
 
       <!-- SidebarSearch Form -->
@@ -299,8 +309,8 @@
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-6">
+        
+          
           <div id="app">
         
         <main class="py-4">
@@ -388,6 +398,8 @@
 <script src="{{ asset('dist/js/demo.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('dist/js/pages/dashboard3.js')}}"></script>
+
+
 </body>
 
 </html>
