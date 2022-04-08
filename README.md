@@ -13,3 +13,5 @@
 <p>File env: <a href="https://drive.google.com/file/d/1qVvg32rHnmu-jlsEGqz8jutBER9Nyeej/view?usp=sharing">https://drive.google.com/file/d/1qVvg32rHnmu-jlsEGqz8jutBER9Nyeej/view?usp=sharing</a></p>
 <p><br></p>
 <p>Full system:&nbsp;<a href="https://drive.google.com/file/d/1CZ8x_t-hrUJyKvfwi3T_5e04JqCdEy9H/view?usp=sharing">https://drive.google.com/file/d/1CZ8x_t-hrUJyKvfwi3T_5e04JqCdEy9H/view?usp=sharing</a></p>
+<p><br></p>
+<p>All note in the project:&nbsp;<a href="https://docs.google.com/document/d/1t5mOnxRmU_cc33TIcto_B_EfT8E2_YYXLta5yDj6W6Q/edit">Note for Comp 1640 - Google Docs</a>&nbsp;</p>
