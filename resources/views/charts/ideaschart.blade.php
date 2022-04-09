@@ -13,9 +13,9 @@
                     {{ __('List of Charts') }}
                 </div>
                 <div class="card-header">
-                    <a href="/ideachart" class="btn btn-primary1">Idea chart</a>
-                    <a href="/viewchart" class="btn btn-primary1">View chart</a>
-                    <a href="/reactionchart" class="btn btn-primary1">Reaction chart</a>
+                    <a href="/ideachart" class="btn btn-dark">Idea chart</a>
+                    <a href="/viewchart" class="btn btn-success">View chart</a>
+                    <a href="/reactionchart" class="btn btn-warning">Reaction chart</a>
                 </div>
             </div>
         </div>
