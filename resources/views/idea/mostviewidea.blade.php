@@ -101,8 +101,8 @@
                 </div>
                 <div class="card-header">
                     <div class="topnav" id="myTopnav">
-                    <a href="/myidea" class="btn btn-primary">My Ideas</a> &nbsp
                     <a href="idea" class="btn btn-primary">All Ideas</a> &nbsp
+                    <a href="/myidea" class="btn btn-primary">My Ideas</a> &nbsp
                     <a href="/showmostpopular" class="btn btn-primary">Most Popular Ideas</a> &nbsp
                     <a href="/showmostviewed" class="btn btn-primary">Most viewed Ideas</a> &nbsp
                     <a href="/lastcreated" class="btn btn-primary">Lastest Ideas</a> &nbsp
