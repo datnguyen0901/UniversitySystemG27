@@ -96,7 +96,7 @@
             <div class="card">
                 <div class="card-header">
                     {{ __('List of Ideas') }}
-                    <a href="idea/create" class="btn btn-info">Create new Idea</a>
+                    <a href="idea/create" class="btn btn-info" style="float: right;">Create new Idea</a>
                 </div>
                 <div class="card-header">
                     <div class="topnav" id="myTopnav">
