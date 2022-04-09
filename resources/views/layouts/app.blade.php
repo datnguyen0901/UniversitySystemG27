@@ -161,6 +161,10 @@
                                 <li class="nav-item">
                                     <a class="btn btn-lg btn-success" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
+                                &nbsp
+                                <li class="nav-item">
+                                    <a class="btn btn-lg btn-success" href="{{ route('login') }}">Login</a>
+                                </li>
                             @endif
                         @else
                                 <li class="nav-item">
