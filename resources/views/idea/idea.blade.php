@@ -32,7 +32,7 @@
                     </table>
                 </div>
                 <div>
-                <a href="idea/create" class="btn btn-info">Create new Idea</a>
+                <a href="idea/create" class="btn btn-info" style="float: right;">Create new Idea</a>
                 </div>
             </div>
         </div>
