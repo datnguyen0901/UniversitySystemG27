@@ -97,7 +97,7 @@
         <div class="col-md-10">
             <div class="card">
                 <div class="card-header">
-                    {{ __('List of Ideas') }}
+                   <B> {{ __('List of Ideas') }}</B>
                     <a href="idea/create" class="btn btn-info" style="float:right;">Create new Idea</a>
                 </div>
                 <div class="card-header">
