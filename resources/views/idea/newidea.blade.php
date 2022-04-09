@@ -121,7 +121,7 @@
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">{{ $idea->description}}</h5>
-                            <a class="btn btn-info" href="/view/{{$idea->id}}">View Idea</a>
+                            <a class="btn btn-success" href="/view/{{$idea->id}}" style="float: right;">View Idea</a>
                         </div>
                         <div class="card-footer text-muted">
                              Created at : {{ $idea->created_at->format('d/m/Y') }}
