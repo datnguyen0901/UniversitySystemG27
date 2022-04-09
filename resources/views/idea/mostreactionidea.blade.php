@@ -119,7 +119,7 @@
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">{{ $idea->description}}</h5>
-                            <a class="btn btn-primary1" href="/comment/{{$idea->id}}">View Idea</a>
+                            <a class="btn btn-success" href="/comment/{{$idea->id}}" style="float: right;">View Idea</a>
                         </div>
                         <div class="card-footer text-muted">
                              Reactions : {{$idea->reactions_count}}
