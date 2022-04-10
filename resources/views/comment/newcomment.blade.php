@@ -6,7 +6,7 @@
 </style>
 @section('content')<div class="container mt-5 mb-5">
     <div class="d-flex justify-content-center row">
-        <div class="d-flex flex-column col-md-8">
+        <div class="d-flex flex-column col-md-10">
             <div class="d-flex flex-row align-items-center text-left comment-top p-2 bg-white border-bottom px-4">
                 <div class="d-flex flex-column-reverse flex-grow-0 align-items-center votings ml-1">
                     <a href="/dislike/{{$idea->id}}}}"><span><i class="fa fa-thumbs-down" style="font-size:24px;color:red"></i></span></a>
