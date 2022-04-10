@@ -344,6 +344,7 @@
 
 <!-- jQuery -->
 <script src="{{ asset('jquery/jquery.min.js') }}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!-- Bootstrap -->
 <script src="{{ asset('dist/js/bootstrap/bootstrap.bundle.min.js')}}"></script>
 <!-- AdminLTE -->
@@ -364,6 +365,11 @@
       x.className = "topnav";
     }
   }
+</script>
+<script>
+function myFunction() {
+  alert("Your request send successfully! Click OK to Continues");
+}
 </script>
 </body>
 
