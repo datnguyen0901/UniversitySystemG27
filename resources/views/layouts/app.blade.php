@@ -166,6 +166,16 @@
                                     <a class="nav-link" href="{{ url('/idea') }}">{{ __('Idea') }}</a>
                                 </li>
 
+                                @if(auth()->user()->role_id == 1)
+                                <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/useredit') }}">{{ __('User Manager') }}</a>
+                                </li>
+                                
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('/department') }}">{{ __('Department') }}</a>
+                                </li>
+                                @endif
+
                                 @if(auth()->user()->role_id == 7 || auth()->user()->role_id == 1)
                                 <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/role') }}">{{ __('Role') }}</a>
@@ -344,7 +354,6 @@
 
 <!-- jQuery -->
 <script src="{{ asset('jquery/jquery.min.js') }}"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!-- Bootstrap -->
 <script src="{{ asset('dist/js/bootstrap/bootstrap.bundle.min.js')}}"></script>
 <!-- AdminLTE -->
@@ -365,11 +374,6 @@
       x.className = "topnav";
     }
   }
-</script>
-<script>
-function myFunction() {
-  alert("Your request send successfully! Click OK to Continues");
-}
 </script>
 </body>
 
