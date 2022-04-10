@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card">
                 <div class="card-header">{{ __('List of Ideas') }}</div>
                 <div class="card-body">
@@ -10,7 +10,7 @@
                         <tr>
                             <th>No</th>
                             <th>Title</th>
-                            <th width="280px">Description</th>
+                            <th>Description</th>
                         </tr>
                         @foreach ($ideas as $idea)
                         <tr>
