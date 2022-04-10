@@ -81,6 +81,8 @@ Route::get('/transfer/{id}', 'TransferFileController@csvDownload')->middleware('
 
 Route::get('/file/delete/{id}', 'FileController@delete');
 
+Route::resource('/user', 'UserController');
+
 Route::get('/useredit', 'UserController@edit')->middleware('role:Admin');
 
 Route::post('/finduser', 'UserController@find')->middleware('role:Admin');
@@ -88,4 +90,11 @@ Route::post('/finduser', 'UserController@find')->middleware('role:Admin');
 Route::get('/userdestroy/{id}', 'UserController@destroy')->middleware('role:Admin');
 
 Route::get('/usermodify/{id}', 'UserController@modify')->middleware('role:Admin');
+
+Route::get('/userupdate', 'UserController@update')->middleware('role:Admin');
+
+Route::get('/user/usermodify/{id}', 'UserController@modify')->middleware('role:Admin');
+
+
+
 

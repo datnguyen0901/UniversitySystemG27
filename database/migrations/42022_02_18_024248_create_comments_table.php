@@ -19,10 +19,10 @@ class CreateCommentsTable extends Migration
             $table->timestamp('created_at')->useCurrent()->nullable();
             $table->timestamp('updated_at')->useCurrent()->nullable();
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
             $table->unsignedBigInteger('idea_id');
             $table->foreign('idea_id')->references('id')->on('ideas')->onDelete('cascade');
-            $table->integer('parent_id')->unsigned()->nullable();
+            $table->integer('parent_id')->unsigned()->nullable()->onDelete('cascade');;
         });
     }
 

@@ -23,13 +23,7 @@
                             <td>{{ $user->role_id }}</td>
                             <td>{{ $user->department_id }}</td>                            
                             <td>
-                                <form action="url('/userdestroy{{$user->id}}')" method="POST">
-                                    <a class="btn btn-primary" href="url('/usermodify{{$user->id}}">Edit</a>
-                
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger" >Delete</button>
-                                </form>
+                                    <a class="btn btn-primary" href="usermodify/{{$user->id}}">Edit</a>
                             </td>
                         </tr>
                         @endforeach

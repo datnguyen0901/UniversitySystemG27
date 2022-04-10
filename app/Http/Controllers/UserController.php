@@ -59,29 +59,32 @@ class UserController extends Controller
     public function modify(Request $request)
     {
         $user = User::find($request->id);
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->role_id = $request->role_id;
-        $user->department_id = $request->department_id;
-        $user->save();
-        return redirect('/users/edit');
+        $user->role_name = Role::Select('name')->where('id', $user->role_id)->first()->name;
+        $user->department_name = Department::Select('name')->where('id', $user->department_id)->first()->name;
+        $roles = Role::all();
+        $departments = Department::all();
+        return view('users.modify',compact('user','roles','departments'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        $user = User::findOrFail($id);
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->department_id = $request->department_id;
-        $user->role_id = $request->role_id;
-        $user->save();
-        return redirect('/users/edit');
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'role_id' => 'required',
+            'department_id' => 'required',
+        ]);
+
+        $user ->update($request->all());
+
+        $users = User::where('name', 'like', '%' . $request->name . '%')->get();
+
+        return view('users.list',compact('users'))->with('success','User updated successfully');
+
     }
 
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
-        $user->delete();
-        return redirect('/users/edit');
+        return back()->with('error','User cannot be deleted please contact IT admin');
     }
 }
