@@ -31,29 +31,9 @@ class UserController extends Controller
 
     public function find(Request $request)
     {
-        $users = User::where('name', 'like', '%' . $request->name . '%')->get();
-        return view('users.list',compact('users'));
-    
-        // while(true)
-        // {
-        //     if ($request->name == null) {
-        //         if ($request->role_id == null) {
-        //             if ($request->department_id == null) {
-        //                 return back()->with('error', 'No data found');
-        //             }
-        //             else {
-        //                 $users = User::where('department_id', $request->department_id)->get();
-        //                 return view('users.edit', compact('users'));
-        //             }
-        //         } else {
-        //             $users = User::where('role_id', $request->role_id)->get();
-        //             return view('users.edit', compact('users'));
-        //         }
-        //     } else {
-        //         $users = User::where('name', 'like', '%'.$request->name.'%')->get();
-        //         return view('users.edit', compact('users'));
-        //     }            
-        // }
+        if ($request->name == null) {
+            return redirect('/useredit')->with('error', 'Please choose a method to find!');
+        }
     }
 
     public function modify(Request $request)
