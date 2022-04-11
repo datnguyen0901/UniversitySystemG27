@@ -57,7 +57,7 @@
   }
 }
 </style>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition">
 <div class="wrapper">
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
