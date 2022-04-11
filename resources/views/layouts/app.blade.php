@@ -55,6 +55,10 @@
     max-width: 200%;
     }
   }
+  .py-4 .flash-message {
+        justify-content: center;
+        display: flex;
+    }
 }
 </style>
 <body class="hold-transition">
