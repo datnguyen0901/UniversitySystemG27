@@ -16,6 +16,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return View
      */
+    public function __construct()
+    {        
+        $this->middleware('auth');
+        $this->middleware('verified');
+    }
+
+
     public function show($id)
     {
         return view('user.profile', ['user' => User::findOrFail($id)]);
