@@ -55,9 +55,13 @@
     max-width: 200%;
     }
   }
+  .py-4 .flash-message {
+        justify-content: center;
+        display: flex;
+    }
 }
 </style>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition">
 <div class="wrapper">
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
