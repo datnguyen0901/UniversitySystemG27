@@ -31,9 +31,39 @@ class UserController extends Controller
 
     public function find(Request $request)
     {
-        if ($request->name == null) {
+        if ($request->name == null && $request->role_id == null && $request->department_id == null){
             return redirect('/useredit')->with('error', 'Please choose a method to find!');
         }
+        if ($request->name != null) {
+            if ($request->role_id != null){
+                if ($request->department_id != null) {
+                    $users = User::where('name', 'like', '%' . $request->name . '%')->where('role_id', '=', $request->role_id)->where('department_id', '=', $request->department_id)->get();
+                } else {
+                    $users = User::where('name', 'like', '%' . $request->name . '%')->where('role_id', '=', $request->role_id)->get();
+                }
+            } else {
+                if ($request->department_id != null) {
+                    $users = User::where('name', 'like', '%' . $request->name . '%')->where('department_id', '=', $request->department_id)->get();
+                } else {
+                    $users = User::where('name', 'like', '%' . $request->name . '%')->get();
+                }
+            }
+        } else {
+            if ($request->role_id != null){
+                if ($request->department_id != null) {
+                    $users = User::where('role_id', '=', $request->role_id)->where('department_id', '=', $request->department_id)->get();
+                } else {
+                    $users = User::where('role_id', '=', $request->role_id)->get();
+                }
+            } else {
+                if ($request->department_id != null) {
+                    $users = User::where('department_id', '=', $request->department_id)->get();
+                } else {
+                    return redirect('/useredit')->with('error', 'Please choose a method to find!');
+                }
+            }
+        }
+        return view('users.list', compact('users'));
     }
 
     public function modify(Request $request)

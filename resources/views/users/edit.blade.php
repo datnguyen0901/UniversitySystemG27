@@ -23,7 +23,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
                             <div class="col-md-6">
                             <select class="form-control" name="role_id">
-                                <option>Select Role</option>
+                                <option value = "">Select Role</option>
                                 @foreach ($roles as $role)
                                 <option value="{{ $role->id }}"> {{ $role->name }} </option>
                                 @endforeach    
@@ -35,7 +35,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Department') }}</label>
                             <div class="col-md-6">
                             <select class="form-control" name="department_id">
-                                <option>Select Department</option>
+                                <option value = "">Select Department</option>
                                 @foreach ($departments as $department)
                                 <option value="{{ $department->id }}"> {{ $department->name }} </option>
                                 @endforeach    
