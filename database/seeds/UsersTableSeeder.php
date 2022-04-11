@@ -60,13 +60,13 @@ class UsersTableSeeder extends Seeder
             'department_id' => 1,
         ]);
         DB::table('users')->insert([
-            'name' => 'QA Coordinator of Business department',
+            'name' => 'QA Coordinator of HR department',
             'email' => 'ntd8989@gmail.com',
             'password' => Hash::make('123456'),
             'remember_token' => Str::random(10),
             'email_verified_at' => now(),
             'role_id' => 4,
-            'department_id' => 2,
+            'department_id' => 5,
         ]);
         DB::table('users')->insert([
             'name' => 'HR Manager',

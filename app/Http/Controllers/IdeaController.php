@@ -27,7 +27,7 @@ class IdeaController extends Controller
 
     public function myidea(){
         $user_id = auth()->user()->id;
-        $ideas = Idea::where("user_id",$user_id)->paginate(5);
+        $ideas = Idea::where("user_id",$user_id)->get();
         return view('idea.idea') -> with(compact('ideas'));
     }
 
@@ -103,7 +103,7 @@ class IdeaController extends Controller
 
     public function store(Request $request){
         if(empty($request->title) || empty($request->description) || empty($request->submission_id) || empty($request->category_id)){
-            return back()->with('error','Please fill all information before summit!'); //Check form validation
+            return redirect()->back()->withInput()->with('error','Please fill all information before summit!'); //Check form validation
         }
         if($request->has('terms')){
             $idea = new Idea;

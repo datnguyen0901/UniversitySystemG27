@@ -30,6 +30,7 @@ class CommentController extends Controller
 
 
     public function show($id){
+        //not send user_id in Idea, comment, reply or reaction to protect the owner
         $idea = Idea::select('id', 'title', 'description','content', 'created_at', 'updated_at')->where('id', $id)->first();
         $comments = Comment::select('id', 'content', 'created_at', 'updated_at')->where('idea_id', $id)->get();
         $file = File::where('idea_id',$idea->id)->first();
@@ -54,7 +55,11 @@ class CommentController extends Controller
         return view('comment.createcomment');
     }
 
-    public function store(Request $request){  
+    public function store(Request $request){
+        if ($request->get('comment_content') == null) 
+        {
+            return redirect()->back()->with('error', 'Comment cannot be empty');
+        } 
         $submission = DB::table('submissions')
         ->join('ideas', 'submissions.id', '=', 'ideas.submission_id')
         ->select(array('submissions.*', DB::raw('count(ideas.id) as ideas_count')))
@@ -87,6 +92,10 @@ class CommentController extends Controller
 
     public function replyStore(Request $request)
     {
+        if ($request->get('comment_content') == null) 
+        {
+            return redirect()->back()->with('error', 'Reply cannot be empty');
+        } 
         $submission = DB::table('submissions')
         ->join('ideas', 'submissions.id', '=', 'ideas.submission_id')
         ->select(array('submissions.*', DB::raw('count(ideas.id) as ideas_count')))

@@ -15,7 +15,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Title') }}</label>
 
                             <div class="col-md-6">
-                                <input id="title" type="text" class="title" name="title" value="">
+                                <input id="title" type="text" class="title" name="title" value="{{ old('tittle') }}">
                             </div>
                         </div>
 
@@ -23,20 +23,20 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
 
                             <div class="col-md-6">
-                                <input id="description" type="text" class="description" name="description" value="">
+                                <input id="description" type="text" class="description" name="description" vvalue="{{ old('description') }}">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Content</label>
-                            <textarea class="form-control" id="content" name="content" rows="10"></textarea>
+                            <textarea class="form-control" id="content" name="content" rows="10" value="{{ old('content') }}"></textarea>
                         </div>
 
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Category') }}</label>
                             <div class="col-md-6">
                             <select class="form-control" name="category_id">
-                                <option>Select category</option>
+                                <option value="{{ old('category_id') }}">Select category</option>
                                 @foreach ($categories as $category)
                                 <option value="{{ $category->id }}"> {{ $category->name }} </option>
                                 @endforeach    
@@ -48,7 +48,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Submission') }}</label>
                             <div class="col-md-6">
                             <select class="form-control" name="submission_id">
-                                <option>Select submission</option>
+                                <option value="{{ old('submission_id') }}">Select submission</option>
                                 @foreach ($submissions as $submission)
                                 <option value="{{ $submission->id }}"> {{ $submission->name }} </option>
                                 @endforeach    
@@ -59,7 +59,7 @@
                         <div class="form-group row">
                             <label for="uploadfile" class="col-md-4 col-form-label text-md-right">{{ __('Upload File') }}</label>
                                 <div class="col-md-6">    
-                                    <input type="file" name="file" class="form-control">
+                                    <input type="file" name="file" class="form-control" value="{{ old('file') }}">
                                 </div>
                         </div>
 
