@@ -150,9 +150,11 @@ class IdeaController extends Controller
 
     public function edit(Idea $idea)
     {
-        $submissions = Submission::all();
+        $submissions = Submission::where('closure_date', '>', Carbon::now())->get();
         $categories = Category::all();
         $files = File::where('idea_id',$idea->id)->get();
+        $idea->submission = Submission::where('id',$idea->submission_id)->first()->name;
+        $idea->category = Category::where('id',$idea->category_id)->first()->name;
         return view('idea.editidea', compact('submissions','categories','idea','files'));
     }
 
@@ -197,6 +199,6 @@ class IdeaController extends Controller
     {
         $idea->delete();
 
-        return redirect('/newidea')->with('success','Idea deleted successfully');
+        return redirect('/myidea')->with('success','Idea deleted successfully');
     }
 }

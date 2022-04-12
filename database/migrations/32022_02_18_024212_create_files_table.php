@@ -17,8 +17,8 @@ class CreateFilesTable extends Migration
             $table->bigIncrements('id');
             $table->string('file_path');
             $table->timestamps();
-            $table->unsignedBigInteger('idea_id');
-            $table->foreign('idea_id')->references('id')->on('ideas')->onDelete('cascade');;
+            $table->unsignedBigInteger('idea_id')->onDelete('cascade');
+            $table->foreign('idea_id')->references('id')->on('ideas');
         });
     }
 
