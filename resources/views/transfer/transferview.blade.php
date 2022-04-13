@@ -36,8 +36,10 @@
                                 @endforeach                               
 
                             </table>
-                            <div>                
+                            <div>     
+                                @if ($submission->ideas->count() > 0)
                                     <span data-href="/transfer/{{$submission->id}}" id="export" class="btn btn-success btn-sm" onclick="exportTasks(event.target);">Export Csv</span>
+                                @endif          
                                     <h3> - </h3>
                                 </div>  
                         </div>                      

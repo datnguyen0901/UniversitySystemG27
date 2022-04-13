@@ -93,7 +93,7 @@ class TransferFileController extends Controller
             
             $writer = new Csv($spreadsheet);
             $writer->save(public_path('csv/'.$idea->name.'.csv'));
-            
+
             return response()->download(public_path('csv/'.$idea->name.'.csv'));
 
     }
