@@ -39,7 +39,7 @@
                             <select class="form-control" name="category_id">
                                 <option>{{$idea->category}}</option>
                                 @foreach ($categories as $category)
-                                <option value="{{ $category->id }}"> {{ $category->name }} </option>
+                                <option value="{{ $category->id }}" {{ $idea->category_id == $category->id ? 'selected' : '' }}> {{ $category->name }} </option>
                                 @endforeach    
                             </select>
                             </div>
@@ -51,7 +51,7 @@
                             <select class="form-control" name="submission_id">
                                 <option>{{$idea->submission}}</option>
                                 @foreach ($submissions as $submission)
-                                <option value="{{ $submission->id }}"> {{ $submission->name }} </option>
+                                <option value="{{ $submission->id }}" {{ $user->submission_id == $submission->id ? 'selected' : '' }}> {{ $submission->name }} </option>
                                 @endforeach    
                             </select>
                             </div>

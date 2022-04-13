@@ -36,15 +36,8 @@ class CategoryController extends Controller
         public function edit(Category $category)
         {
             return view('category.editcategory',compact('category'));
-        }
-    
-        /**
-         * Update the specified resource in storage.
-         *
-         * @param  \Illuminate\Http\Request  $request
-         * @param  \App\category  $category
-         * @return \Illuminate\Http\Response
-         */
+        }  
+
         public function update(Request $request, Category $category)
         {
             $request->validate([
@@ -55,14 +48,8 @@ class CategoryController extends Controller
             $category->update($request->all());
     
             return redirect('/category')->with('success','Category updated successfully');
-        }
-    
-        /**
-         * Remove the specified resource from storage.
-         *
-         * @param  \App\category  $category
-         * @return \Illuminate\Http\Response
-         */
+        }   
+
         public function destroy(Category $category)
         {
             $category1 = DB::table('categories')

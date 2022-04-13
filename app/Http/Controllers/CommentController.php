@@ -32,7 +32,7 @@ class CommentController extends Controller
     public function show($id){
         //not send user_id in Idea, comment, reply or reaction to protect the owner
         $idea = Idea::select('id', 'title', 'description','content', 'created_at', 'updated_at')->where('id', $id)->first();
-        $comments = Comment::select('id', 'content', 'created_at', 'updated_at')->where('idea_id', $id)->get();
+        $comments = Comment::select('id', 'content', 'created_at', 'updated_at')->where('idea_id', $id)->orderBy('created_at', 'desc')->get();
         $file = File::where('idea_id',$idea->id)->first();
 
         $viewsCount = View::where('idea_id', $idea->id)->count();
