@@ -98,7 +98,7 @@ class IdeaController extends Controller
     }
 
     public function terms(){
-        return response()->file(public_path('file\terms.pdf'));
+        return response()->file(public_path('file/terms.pdf'));
     }
 
     public function store(Request $request){
