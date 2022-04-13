@@ -172,6 +172,7 @@ class IdeaController extends Controller
             'description' => 'required',
             'content' => 'required',
             'updated_at' => Carbon::now(),
+            'file' => 'required|mimes:pdf,xlx,csv,docx,jpg,gif,png|max:2048',
         ]);
 
         $fileName = time().'.'.$request->file->extension();  
@@ -186,7 +187,7 @@ class IdeaController extends Controller
 
         $idea->update($request->all());
 
-        return redirect('/idea')->with('success','Idea updated successfully');
+        return redirect('/myidea')->with('success','Idea updated successfully');
     }
 
     /**
