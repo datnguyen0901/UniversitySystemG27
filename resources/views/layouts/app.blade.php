@@ -174,10 +174,6 @@
                                 <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/useredit') }}">{{ __('User Manager') }}</a>
                                 </li>
-                                
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/department') }}">{{ __('Department') }}</a>
-                                </li>
                                 @endif
 
                                 @if(auth()->user()->role_id == 7 || auth()->user()->role_id == 1)

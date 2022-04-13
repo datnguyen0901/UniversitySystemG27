@@ -44,9 +44,9 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
                             <div class="col-md-6">
                             <select class="form-control" name="role_id">
-                                <option>{{$user->role_name}}</option>
+                                <option disabled selected>{{$user->role_name}}</option>
                                 @foreach ($roles as $role)
-                                <option value="{{ $role->id }}" {{ $user->role_id == $role->id ? 'selected' : '' }}> {{ $role->name }} </option>
+                                <option value="{{ $role->id }}" {{ $user->role_id == $role->id ? 'selected' : ''}}> {{ $role->name }} </option>
                                 @endforeach    
                             </select>
                             </div>
@@ -56,7 +56,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Department') }}</label>
                             <div class="col-md-6">
                             <select class="form-control" name="department_id" value="{{$user->department_id}}">
-                                <option>{{$user->department_name}}</option>
+                                <option disabled selected>{{$user->department_name}}</option>
                                 @foreach ($departments as $department)
                                 <option value="{{ $department->id }}" {{ $user->department_id == $department->id ? 'selected' : '' }}> {{ $department->name }} </option>
                                 @endforeach    
