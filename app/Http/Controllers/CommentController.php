@@ -75,7 +75,7 @@ class CommentController extends Controller
             $idea = Idea::find($request->get('idea_id'));
             $idea->comments()->save($comment);
             //send mail after comment
-            $user = User::find($comment->user_id);
+            $user = User::find($idea->user_id);
             $ideamail = User::where('id',$idea->user_id)->first();
             Mail::send('emails.commentemail', compact('user','comment'), function ($message) use ($ideamail)
             {
@@ -111,7 +111,7 @@ class CommentController extends Controller
         $idea = Idea::find($request->get('idea_id'));
         $idea->comments()->save($reply);
         //send mail after reply
-        $user = User::find($reply->user_id);
+        $user = User::find($reply->parent_id);
         $replymail = User::where('id',$reply->user_id)->first();
         Mail::send('emails.replyemail', compact('user','reply'), function ($message) use ($replymail)
         {
