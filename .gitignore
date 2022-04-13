@@ -13,3 +13,5 @@ yarn-error.log
 *.jpg
 *.csv
 *.csv
+public/csv/Sprint Ideas.csv
+*.csv
