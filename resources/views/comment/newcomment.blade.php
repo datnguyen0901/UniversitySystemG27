@@ -1,10 +1,11 @@
 @extends('layouts.app')
+@section('content')
 <style>
     .display-comment .display-comment {
         margin-left: 40px
     }
 </style>
-@section('content')<div class="container mt-5 mb-5">
+<div class="container mt-5 mb-5">
     <div class="d-flex justify-content-center row">
         <div class="d-flex flex-column col-md-10">
             <div class="d-flex flex-row align-items-center text-left comment-top p-2 bg-white border-bottom px-4">
