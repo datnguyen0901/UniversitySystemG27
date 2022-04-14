@@ -211,8 +211,10 @@ class IdeaController extends Controller
      */
     public function destroy(Idea $idea)
     {
-        $file = File::where('idea_id',$idea->id)->first();
-        $file->delete();
+        $files = File::where('idea_id',$idea->id)->get();
+        foreach ($files as $file) {
+            $file->delete();
+        }
         $idea->delete();
         return redirect('/myidea')->with('success','Idea deleted successfully');
     }
