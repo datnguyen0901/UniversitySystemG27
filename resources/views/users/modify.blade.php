@@ -55,7 +55,7 @@
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Department') }}</label>
                             <div class="col-md-6">
-                            <select class="form-control" name="department_id" value="{{$user->department_id}}">
+                            <select class="form-control" name="department_id">
                                 <option disabled selected>{{$user->department_name}}</option>
                                 @foreach ($departments as $department)
                                 <option value="{{ $department->id }}" {{ $user->department_id == $department->id ? 'selected' : '' }}> {{ $department->name }} </option>

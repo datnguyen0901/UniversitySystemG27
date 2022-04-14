@@ -117,19 +117,21 @@ class IdeaController extends Controller
             $idea->updated_at = null;
             $idea->save();
 
-            $request->validate([
-                'file' => 'required|mimes:pdf,xlx,csv,docx,jpg,gif,png|max:2048',
-            ]);
-      
-            $fileName = time().'.'.$request->file->extension();  
-       
-            $request->file->move(public_path('uploads'), $fileName);
-    
-            //save file data to Files table
-            $file = new File();
-            $file->file_path = $fileName;
-            $file->idea_id = $idea->id;
-            $file->save();
+            if ($request->hasFile('file')) {
+                $request->validate([
+                    'file' => 'required|mimes:pdf,xlx,csv,docx,jpg,gif,png|max:2048',
+                ]);
+          
+                $fileName = time().'.'.$request->file->extension();  
+           
+                $request->file->move(public_path('uploads'), $fileName);
+        
+                //save file data to Files table
+                $file = new File();
+                $file->file_path = $fileName;
+                $file->idea_id = $idea->id;
+                $file->save();
+            }
 
             //mail to QA coordinator when summit idea
             $user = User::find($idea->user_id);
@@ -153,8 +155,8 @@ class IdeaController extends Controller
         $submissions = Submission::where('closure_date', '>', Carbon::now())->get();
         $categories = Category::all();
         $files = File::where('idea_id',$idea->id)->get();
-        $idea->submission = Submission::where('id',$idea->submission_id)->first()->name;
-        $idea->category = Category::where('id',$idea->category_id)->first()->name;
+        $idea->submission_name = Submission::where('id',$idea->submission_id)->first()->name;
+        $idea->category_name = Category::where('id',$idea->category_id)->first()->name;
         return view('idea.editidea', compact('submissions','categories','idea','files'));
     }
 
@@ -171,21 +173,32 @@ class IdeaController extends Controller
             'title' => 'required',
             'description' => 'required',
             'content' => 'required',
+            'category_id' => 'required', 
+            'submission_id' => 'required',           
             'updated_at' => Carbon::now(),
-            'file' => 'required|mimes:pdf,xlx,csv,docx,jpg,gif,png|max:2048',
         ]);
 
-        $fileName = time().'.'.$request->file->extension();  
-       
-        $request->file->move(public_path('uploads'), $fileName);
-
-        $file = new File();
-        $file->file_path = $fileName;
-        $file->idea_id = $idea->id;
-        $file->save();
-
+        $idea->category_id = $request->category_id;
+        $idea->submission_id = $request->submission_id;
+        $idea->save();
 
         $idea->update($request->all());
+
+        if ($request->hasFile('file')) {
+            $request->validate([
+                'file' => 'required|mimes:pdf,xlx,csv,docx,jpg,gif,png|max:2048',
+            ]);
+      
+            $fileName = time().'.'.$request->file->extension();  
+       
+            $request->file->move(public_path('uploads'), $fileName);
+    
+            //save file data to Files table
+            $file = new File();
+            $file->file_path = $fileName;
+            $file->idea_id = $idea->id;
+            $file->save();
+        }        
 
         return redirect('/myidea')->with('success','Idea updated successfully');
     }

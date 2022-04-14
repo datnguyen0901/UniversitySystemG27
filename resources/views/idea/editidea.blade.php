@@ -37,7 +37,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Category') }}</label>
                             <div class="col-md-6">
                             <select class="form-control" name="category_id">
-                                <option>{{$idea->category}}</option>
+                                <option disabled selected>{{$idea->category_name}}</option>
                                 @foreach ($categories as $category)
                                 <option value="{{ $category->id }}" {{ $idea->category_id == $category->id ? 'selected' : '' }}> {{ $category->name }} </option>
                                 @endforeach    
@@ -49,7 +49,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Submission') }}</label>
                             <div class="col-md-6">
                             <select class="form-control" name="submission_id">
-                                <option>{{$idea->submission}}</option>
+                                <option disabled selected>{{$idea->submission_name}}</option>
                                 @foreach ($submissions as $submission)
                                 <option value="{{ $submission->id }}" {{ $idea->submission_id == $submission->id ? 'selected' : '' }}> {{ $submission->name }} </option>
                                 @endforeach    
