@@ -16,8 +16,8 @@ class SubmissionsTableSeeder extends Seeder
         DB::table('submissions')->insert([
             'name' => 'Sprint Ideas',
             'description' => 'Contest for ideas for Sprint',
-            'closure_date' => '2022-01-01 06:00:00',
-            'final_closure_date' => '2022-01-30 23:59:59',
+            'closure_date' => '2022-05-01 06:00:00',
+            'final_closure_date' => '2022-06-30 23:59:59',
         ]);
         DB::table('submissions')->insert([
             'name' => 'Summer Ideas',
@@ -44,13 +44,13 @@ class SubmissionsTableSeeder extends Seeder
             'final_closure_date' => '2022-03-01 23:59:59',
         ]);
         DB::table('submissions')->insert([
-            'name' => 'Test Submission ',
+            'name' => 'Test Submission 1',
             'description' => 'Closure data is over, but still can comment',
             'closure_date' => '2022-04-01 06:00:00',
             'final_closure_date' => '2022-05-01 23:59:59',
         ]);
         DB::table('submissions')->insert([
-            'name' => 'Test Submission ',
+            'name' => 'Test Submission 2',
             'description' => 'Closure data is over, final Close date is over, but still can view',
             'closure_date' => '2022-04-01 06:00:00',
             'final_closure_date' => '2022-04-10 23:59:59',
