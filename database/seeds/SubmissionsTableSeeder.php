@@ -46,14 +46,14 @@ class SubmissionsTableSeeder extends Seeder
         DB::table('submissions')->insert([
             'name' => 'Test Submission over closure date',
             'description' => 'Closure data is over, but still can comment',
-            'closure_date' => '2022-04-01 06:00:00',
-            'final_closure_date' => '2022-05-01 23:59:59',
+            'closure_date' => '2022-05-01 06:00:00',
+            'final_closure_date' => '2022-06-01 23:59:59',
         ]);
         DB::table('submissions')->insert([
             'name' => 'Test Submission over final closure date',
             'description' => 'Closure data is over, final Close date is over, but still can view',
-            'closure_date' => '2022-05-01 06:00:00',
-            'final_closure_date' => '2022-06-10 23:59:59',
+            'closure_date' => '2022-04-01 06:00:00',
+            'final_closure_date' => '2022-05-01 23:59:59',
         ]);
     }
 }
