@@ -97,23 +97,23 @@ class IdeasTableSeeder extends Seeder
             'updated_at' => Carbon::now(),
         ]);
         DB::table('ideas')->insert([
-            'title' => 'Laravel for test the submission when create or edit',
-            'description' => 'Test Submission',
+            'title' => 'Test the submission over CD',
+            'description' => 'Test Submission over closure date',
             'content' => 'Laravel is a free, open-source PHP web framework, created by Taylor Otwell and intended for the development of web applications following the model–view–controller (MVC) architectural pattern. Laravel is a micro-framework, which means that Laravel is designed to be used as a standalone application or a component library. It is a collection of commonly used components and traits for developing web applications.',
             'category_id' => 3,
             'submission_id' => 6, 
             'user_id' => 1,
-            'created_at' => '2022-01-15 06:00:00',
+            'created_at' => '2022-04-15 06:00:00',
             'updated_at' => Carbon::now(),
         ]);
         DB::table('ideas')->insert([
-            'title' => 'Laravel for test the submission when comment or reply',
-            'description' => 'Test Submission',
+            'title' => 'Test the submission over FCD',
+            'description' => 'Test Submission over final closure date',
             'content' => 'Laravel is a free, open-source PHP web framework, created by Taylor Otwell and intended for the development of web applications following the model–view–controller (MVC) architectural pattern. Laravel is a micro-framework, which means that Laravel is designed to be used as a standalone application or a component library. It is a collection of commonly used components and traits for developing web applications.',
             'category_id' => 4,
             'submission_id' => 7, 
             'user_id' => 1,
-            'created_at' => '2022-01-15 06:00:00',
+            'created_at' => '2022-04-15 06:00:00',
             'updated_at' => Carbon::now(),
         ]);
     }
